@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Portafolio de Gustavo Martinez, Ingeniero de Software enfocado en AI-driven development, full-stack systems y software architecture aplicada.">
+  <meta name="keywords"
+    content="Software Engineer, Angular, Next.js, TypeScript, Python, Flask, MySQL, IoT, Machine Learning, AI Development">
+  <meta name="author" content="Gustavo Enrique Martinez Moreno">
+  <title>Gustavo Martinez - Ingeniero de Software</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Gustavo Martinez — Ingeniero de Software">
+  <meta property="og:description" content="AI-driven engineering, full-stack systems y software architecture.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="src/styles/tokens.css">
+  <link rel="stylesheet" href="src/styles/base.css">
+  <link rel="stylesheet" href="src/styles/components.css">
+  <link rel="stylesheet" href="src/styles/sections.css">
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+  <script src="src/lib/main.js" defer></script>
+</head>
+
+<body>
+
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- ======================== -->
+  <!-- NAVIGATION               -->
+  <!-- ======================== -->
+  <header>
+    <nav class="nav" id="main-nav" aria-label="Navegación principal">
+      <div class="container nav__inner">
+        <a href="#hero" class="nav__logo" id="nav-logo">
+          GM<span>.</span>
+        </a>
+
+        <ul class="nav__links">
+          <li><a href="#about" class="nav__link" id="nav-about">Sobre mi</a></li>
+          <li><a href="#experience" class="nav__link" id="nav-experience">Experiencia</a></li>
+          <li><a href="#skills" class="nav__link" id="nav-skills">Habilidades</a></li>
+          <li><a href="#projects" class="nav__link" id="nav-projects">Proyectos</a></li>
+          <li>
+            <button class="btn btn-primary nav__cta" id="nav-contact" aria-haspopup="dialog" aria-expanded="false"
+              aria-controls="contact-modal">
+              Contacto
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content" class="layer-content">
+
+    <!-- ======================== -->
+    <!-- HERO SECTION             -->
+    <!-- ======================== -->
+    <section class="hero" id="hero" aria-label="Introducción principal">
+      <div class="container hero__inner">
+
+        <div class="hero__content">
+          <p class="hero__eyebrow reveal" id="hero-eyebrow">Ingeniería de Software</p>
+
+          <h1 class="hero__headline reveal reveal-delay-1" id="hero-headline">
+            Construyendo<br>
+            <span class="accent">Software</span><br>
+            Inteligente.
+          </h1>
+
+          <p class="hero__description reveal reveal-delay-2" id="hero-description">
+            Ingeniero de software enfocado en apps full-stack y arquitectura de software para resolver problemas reales.
+          </p>
+
+          <div class="hero__actions reveal reveal-delay-3" id="hero-actions">
+            <a href="#projects" class="btn btn-primary" id="btn-view-work">Ver proyectos</a>
+            <a href="#about" class="btn btn-secondary" id="btn-about-me">Sobre mi</a>
+          </div>
+        </div>
+
+        <div class="hero__visual reveal reveal-delay-2" id="hero-visual" aria-hidden="true">
+          <div class="hero__code-card" id="hero-code-card">
+            <div class="code-line"><span class="ln">1</span><span class="code-key">const</span>&nbsp;<span
+                class="code-value">developer</span>&nbsp;<span class="code-op">=</span>&nbsp;<span
+                class="code-op">{</span></div>
+            <div class="code-line"><span class="ln">2</span>&nbsp;&nbsp;<span class="code-key">name</span><span
+                class="code-op">:</span>&nbsp;<span class="code-string">'Gustavo Enrique Martinez'</span><span
+                class="code-op">,</span></div>
+            <div class="code-line"><span class="ln">3</span>&nbsp;&nbsp;<span class="code-key">role</span><span
+                class="code-op">:</span>&nbsp;<span class="code-string">'Software Engineer'</span><span
+                class="code-op">,</span></div>
+            <div class="code-line"><span class="ln">4</span>&nbsp;&nbsp;<span class="code-key">stack</span><span
+                class="code-op">:</span>&nbsp;<span class="code-op">[</span></div>
+            <div class="code-line"><span class="ln">5</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                class="code-string">'Angular'</span><span class="code-op">,</span>&nbsp;<span
+                class="code-string">'Next.js'</span><span class="code-op">,</span></div>
+            <div class="code-line"><span class="ln">6</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                class="code-string">'TypeScript'</span><span class="code-op">,</span>&nbsp;<span
+                class="code-string">'Python'</span><span class="code-op">,</span></div>
+            <div class="code-line"><span class="ln">7</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                class="code-string">'Flask'</span><span class="code-op">,</span>&nbsp;<span
+                class="code-string">'MySQL'</span></div>
+            <div class="code-line"><span class="ln">8</span>&nbsp;&nbsp;<span class="code-op">],</span></div>
+            <div class="code-line"><span class="ln">9</span>&nbsp;&nbsp;<span class="code-key">philosophy</span><span
+                class="code-op">:</span>&nbsp;<span class="code-string">'Architectural Precision'</span></div>
+            <div class="code-line"><span class="ln">10</span><span class="code-op">};</span></div>
+          </div>
+
+          <div class="hero__badges" id="hero-badges">
+            <span class="hero__badge" style="--dur: 5s;">⚡ AI-Driven Dev</span>
+            <span class="hero__badge" style="--dur: 4s; animation-delay: 0.5s;">🏗️ Software Architecture</span>
+            <span class="hero__badge" style="--dur: 6s; animation-delay: 1s;">🤖 IoT + ML Systems</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================== -->
+    <!-- ABOUT SECTION            -->
+    <!-- ======================== -->
+    <section class="about" id="about" aria-labelledby="about-heading">
+      <div class="container about__inner">
+
+        <div class="about__sticky">
+          <div class="about__avatar-wrap reveal" id="about-avatar">
+            <img src="/src/styles/imgs/Foto.jpg" alt="">
+          </div>
+        </div>
+
+        <div class="about__content">
+          <span class="section-label reveal" id="about-label">Sobre mi</span>
+          <h2 class="section-heading reveal reveal-delay-1" id="about-heading">
+            Creando productos<br>
+            que <span class="accent-text">resuelven problemas reales.</span>
+          </h2>
+
+          <p class="about__lead reveal reveal-delay-2" id="about-lead">
+            Soy desarrollador de software con enfoque en
+            <span class="highlight">AI-driven development</span>, aplicaciones full-stack,
+            arquitectura y diseño de software para sistemas escalables.
+          </p>
+
+          <p class="about__body reveal reveal-delay-2" id="about-body">
+            He colaborado en equipos multidisciplinarios para construir productos reales:
+            desde sistemas web con roles y permisos en plataformas escolares, hasta un sistema IoT +
+            Machine Learning con 99.8% de precision en tiempo real.
+          </p>
+
+          <p class="about__stack-heading reveal reveal-delay-3" id="about-stack-heading">
+            Stack actual
+          </p>
+          <div class="about__stack-grid reveal reveal-delay-3" id="about-stack-grid">
+            <span class="tag">Angular</span>
+            <span class="tag">Next.js</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Python (Flask)</span>
+            <span class="tag tag--teal">MySQL</span>
+            <span class="tag tag--teal">Machine Learning</span>
+            <span class="tag tag--gold">IoT</span>
+            <span class="tag tag--gold">SCRUM</span>
+          </div>
+        </div>
+    </section>
+
+    <!-- ======================== -->
+    <!-- EXPERIENCE SECTION       -->
+    <!-- ======================== -->
+    <section class="experience" id="experience" aria-labelledby="experience-heading">
+      <div class="container experience__inner">
+
+        <div class="experience__header">
+          <span class="section-label reveal" id="exp-label">Experiencia</span>
+          <h2 class="section-heading reveal reveal-delay-1" id="experience-heading">
+            Donde he<br>trabajado.
+          </h2>
+          <p class="section-subtext reveal reveal-delay-2" id="exp-subtext">
+            Experiencia aplicada en IoT, Machine Learning, Bases de Datos
+            y Sistemas Web para usuarios reales.
+          </p>
+        </div>
+
+        <div class="timeline" id="experience-timeline">
+
+          <article class="timeline-item reveal" id="exp-1">
+            <div class="timeline-item__meta">
+              <div class="timeline-item__date">Feb — Mar 2026</div>
+              <div class="timeline-item__company">Predictive Smart Greenhouse</div>
+            </div>
+            <div class="timeline-item__body">
+              <h3 class="timeline-item__role">Full-Stack IoT &amp; ML Engineer</h3>
+              <ul class="timeline-item__points">
+                <li class="timeline-point">
+                  <svg class="timeline-point__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Desarrollé un backend con Flask que procesa datos en tiempo real desde Arduino via comunicacion
+                    serial.</span>
+                </li>
+                <li class="timeline-point">
+                  <svg class="timeline-point__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Entrené y desplegué un modelo Random Forest con 99.8% de precisión para predecir
+                    requerimientos de riego.</span>
+                </li>
+                <li class="timeline-point">
+                  <svg class="timeline-point__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Integré la API de Telegram para enviar mensajes y publiqué datos en un dashboard de monitoreo
+                    remoto usando Ngrok.</span>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal reveal-delay-1" id="exp-2">
+            <div class="timeline-item__meta">
+              <div class="timeline-item__date">Jun — Dec 2025</div>
+              <div class="timeline-item__company">CECyTE Puebla</div>
+            </div>
+            <div class="timeline-item__body">
+              <h3 class="timeline-item__role">Requirements &amp; Architecture Contributor</h3>
+              <ul class="timeline-item__points">
+                <li class="timeline-point">
+                  <svg class="timeline-point__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Lideré la recoleccion de requeriemientos (FR/NFR). Realicé las entrevistas con los stakeholder,
+                    documente las reglas de negocio y casos de uso.</span>
+                </li>
+                <li class="timeline-point">
+                  <svg class="timeline-point__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Propuse la arquitectura MVC y co-diseñé el esquema de base de datos relacional
+                    adoptado por el equipo.</span>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal reveal-delay-2" id="exp-3">
+            <div class="timeline-item__meta">
+              <div class="timeline-item__date">Feb — May 2025</div>
+              <div class="timeline-item__company">Kaffecito</div>
+            </div>
+            <div class="timeline-item__body">
+              <h3 class="timeline-item__role">Full-Stack Team Developer</h3>
+              <ul class="timeline-item__points">
+                <li class="timeline-point">
+                  <svg class="timeline-point__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Construimos un sistema web basado en roles para administradores, empleados y
+                    clientes.</span>
+                </li>
+                <li class="timeline-point">
+                  <svg class="timeline-point__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Implemento un sistema de ordenes y pagos , incluyendo checkout como invitado y con
+                    cuenta.</span>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== -->
+    <!-- SKILLS SECTION           -->
+    <!-- ======================== -->
+    <section class="skills" id="skills" aria-labelledby="skills-heading">
+      <div class="container">
+        <div class="skills__header">
+          <span class="section-label reveal" id="skills-label">Habilidades</span>
+          <h2 class="section-heading reveal reveal-delay-1" id="skills-heading">
+            Panorama completo.
+          </h2>
+        </div>
+
+        <div class="skills__grid" id="skills-grid">
+
+          <div class="skill-block reveal" id="skill-webdesign">
+            <div class="skill-block__category">AI &amp; Data</div>
+            <ul class="skill-block__list">
+              <li class="skill-item">
+                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                AI-Assisted Development
+              </li>
+              <li class="skill-item">
+                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Machine Learning
+              </li>
+              <li class="skill-item">
+                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Prompt Engineering
+              </li>
+              <li class="skill-item">
+                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Data Structures
+              </li>
+            </ul>
+          </div>
+
+          <div class="skill-block reveal reveal-delay-1" id="skill-frontend">
+            <div class="skill-block__category">Frontend</div>
+            <ul class="skill-block__list">
+              <li class="skill-item">
+                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Angular &amp; Next.js
+              </li>
+              <li class="skill-item">
+                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                TypeScript
+              </li>
+              <li class="skill-item">
+                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                HTML &amp; CSS
+              </li>
+              <li class="skill-item">
+                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Prototyping (Figma)
+              </li>
+            </ul>
+          </div>
+
+          <div class="skill-block reveal reveal-delay-2" id="skill-backend">
+            <div class="skill-block__category">Backend</div>
+            <ul class="skill-block__list">
+              <li class="skill-item">
+                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Python (Flask)
+              </li>
+              <li class="skill-item">
+                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Node.js (Express)
+              </li>
+              <li class="skill-item">
+                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                MySQL &amp; SQL Design
+              </li>
+              <li class="skill-item">
+                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                MVC Architecture
+              </li>
+            </ul>
+          </div>
+
+          <div class="skill-block reveal reveal-delay-3" id="skill-soft">
+            <div class="skill-block__category">Soft Skills</div>
+            <ul class="skill-block__list">
+              <li class="skill-item">
+                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                SCRUM Methodology
+              </li>
+              <li class="skill-item">
+                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Leadership
+              </li>
+              <li class="skill-item">
+                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Communication
+              </li>
+              <li class="skill-item">
+                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Teamwork
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== -->
+    <!-- PROJECTS SECTION         -->
+    <!-- ======================== -->
+    <section class="projects" id="projects" aria-labelledby="projects-heading">
+      <div class="container layer-content">
+
+        <div class="projects__header">
+          <div>
+            <span class="section-label reveal" id="projects-label">Proyectos</span>
+            <h2 class="section-heading reveal reveal-delay-1" id="projects-heading">
+              Proyectos destacados.
+            </h2>
+          </div>
+          <a href="#" class="btn btn-tertiary reveal reveal-delay-2" id="btn-all-works">Ver todos</a>
+        </div>
+
+        <div class="projects__grid" id="projects-grid">
+
+          <article class="card reveal" id="project-apex" aria-label="Proyecto Predictive Smart Greenhouse">
+            <div class="card__image-wrap">
+              <img src="/src/styles/imgs/Invernadero.jpeg" alt=""> <!--INVERNADERO-->
+            </div>
+            <div class="card__body">
+              <div class="card__tags">
+                <span class="tag tag--gold">Destacado</span>
+                <span class="tag">Python</span>
+                <span class="tag">IoT</span>
+                <span class="tag">Machine Learning</span>
+              </div>
+              <h3 class="card__title" id="project-apex-title">Predictive Smart Greenhouse</h3>
+              <p class="card__description" id="project-apex-desc">
+                Sistema IoT full-stack que predice requerimientos de riego con datos ambientales en tiempo real.
+                Potenciado por un Random Forest model con 99.8% accuracy.
+              </p>
+              <div class="card__footer">
+                <a href="#" class="btn btn-tertiary" id="btn-apex">Ver proyecto</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card reveal reveal-delay-1" id="project-vogue" aria-label="Proyecto CECyTE Admin Software">
+            <div class="card__image-wrap">
+              <img src="/src/styles/imgs/ERD_CECYTE.png" alt="">
+            </div>
+            <div class="card__body">
+              <div class="card__tags">
+                <span class="tag">Requeriemientos</span>
+                <span class="tag tag--teal">Base de Datos</span>
+              </div>
+              <h3 class="card__title" id="project-vogue-title">CECyTE Admin Software</h3>
+              <p class="card__description" id="project-vogue-desc">
+                School administration software definido mediante FR/NFR elicitation,
+                stakeholder interviews y relational database design.
+              </p>
+              <div class="card__footer">
+                <a href="#" class="btn btn-tertiary" id="btn-vogue">Ver proyecto</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card reveal reveal-delay-2" id="project-ds" aria-label="Proyecto Kaffecito Management System">
+            <div class="card__image-wrap">
+              <img src="/src/styles/imgs/Kaffecito.png" alt="">
+            </div>
+            <div class="card__body">
+              <div class="card__tags">
+                <span class="tag">Full-Stack</span>
+                <span class="tag tag--teal">Modelado FIgma</span>
+              </div>
+              <h3 class="card__title" id="project-ds-title">Kaffecito Management System</h3>
+              <p class="card__description" id="project-ds-desc">
+                Web management system para una cafetería local con módulos por rol,
+                order lifecycle control e integrated payment flows.
+              </p>
+              <div class="card__footer">
+                <a href="#" class="btn btn-tertiary" id="btn-ds">Ver proyecto</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================== -->
+  <!-- FOOTER                   -->
+  <!-- ======================== -->
+  <footer class="footer layer-content" id="footer">
+    <div class="container footer__inner">
+      <p class="footer__copy" id="footer-copy">
+        © 2026 Gustavo Enrique Martinez Moreno.
+      </p>
+      <nav class="footer__links" aria-label="Navegación del pie de página">
+        <a href="https://github.com/TavoMtz" class="footer__link" id="footer-github" target="_blank"
+          rel="noopener noreferrer">GitHub</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ======================== -->
+  <!-- CONTACT MODAL            -->
+  <!-- ======================== -->
+  <div class="modal-overlay" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"
+    aria-hidden="true">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-title">Hablemos.</h2>
+        <button class="modal-close" id="btn-close-modal" aria-label="Cerrar modal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p class="modal-desc">
+          Envíame un mensaje y me pondré en contacto contigo lo antes posible.
+        </p>
+
+        <form id="contact-form" class="contact-form">
+          <input type="hidden" name="to_email" value="gustavoenriquemartinezmoreno@gmail.com">
+          <input type="hidden" name="to_name" value="Gustavo Martinez">
+          <input type="hidden" name="title" value="Mensaje desde el portafolio">
+
+          <div class="form-group">
+            <label for="name">Nombre completo</label>
+            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" rows="4" placeholder="¿En qué puedo ayudarte?" required></textarea>
+          </div>
+
+          <div class="form-status" id="form-status" aria-live="polite"></div>
+
+          <button type="submit" class="btn btn-primary form-submit" id="btn-submit-form">
+            <span>Enviar mensaje</span>
+            <div class="spinner" id="form-spinner" aria-hidden="true"></div>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
