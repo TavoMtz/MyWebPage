@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="src/styles/base.css">
   <link rel="stylesheet" href="src/styles/components.css">
   <link rel="stylesheet" href="src/styles/sections.css">
+  <link rel="stylesheet" href="src/styles/responsive.css">
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
@@ -46,7 +47,13 @@
           GM<span>.</span>
         </a>
 
-        <ul class="nav__links">
+        <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul class="nav__links" id="nav-menu">
           <li><a href="#about" class="nav__link" id="nav-about">Sobre mi</a></li>
           <li><a href="#experience" class="nav__link" id="nav-experience">Experiencia</a></li>
           <li><a href="#skills" class="nav__link" id="nav-skills">Habilidades</a></li>
@@ -462,8 +469,8 @@
         <div class="projects__grid" id="projects-grid">
 
           <article class="card reveal" id="project-apex" aria-label="Proyecto Predictive Smart Greenhouse">
-            <div class="card__image-wrap">
-              <img src="/src/styles/imgs/Invernadero.jpeg" alt=""> <!--INVERNADERO-->
+            <div class="card__image-wrap is-loading">
+              <img src="/src/styles/imgs/Invernadero.jpeg" alt="" onload="this.parentElement.classList.remove('is-loading')">
             </div>
             <div class="card__body">
               <div class="card__tags">
@@ -478,14 +485,14 @@
                 Potenciado por un Random Forest model con 99.8% accuracy.
               </p>
               <div class="card__footer">
-                <a href="#" class="btn btn-tertiary" id="btn-apex">Ver proyecto</a>
+                <a href="pages/greenhouse_project_detail.html" class="btn btn-tertiary" id="btn-apex">Ver proyecto</a>
               </div>
             </div>
           </article>
 
           <article class="card reveal reveal-delay-1" id="project-vogue" aria-label="Proyecto CECyTE Admin Software">
-            <div class="card__image-wrap">
-              <img src="/src/styles/imgs/ERD_CECYTE.png" alt="">
+            <div class="card__image-wrap is-loading">
+              <img src="/src/styles/imgs/ERD_CECYTE.png" alt="" onload="this.parentElement.classList.remove('is-loading')">
             </div>
             <div class="card__body">
               <div class="card__tags">
@@ -498,14 +505,14 @@
                 stakeholder interviews y relational database design.
               </p>
               <div class="card__footer">
-                <a href="#" class="btn btn-tertiary" id="btn-vogue">Ver proyecto</a>
+                <a href="pages/cecyte_project_detail.html" class="btn btn-tertiary" id="btn-vogue">Ver proyecto</a>
               </div>
             </div>
           </article>
 
           <article class="card reveal reveal-delay-2" id="project-ds" aria-label="Proyecto Kaffecito Management System">
-            <div class="card__image-wrap">
-              <img src="/src/styles/imgs/Kaffecito.png" alt="">
+            <div class="card__image-wrap is-loading">
+              <img src="/src/styles/imgs/Kaffecito.png" alt="" onload="this.parentElement.classList.remove('is-loading')">
             </div>
             <div class="card__body">
               <div class="card__tags">
@@ -518,7 +525,7 @@
                 order lifecycle control e integrated payment flows.
               </p>
               <div class="card__footer">
-                <a href="#" class="btn btn-tertiary" id="btn-ds">Ver proyecto</a>
+                <a href="pages/kaffecito_project_detail.html" class="btn btn-tertiary" id="btn-ds">Ver proyecto</a>
               </div>
             </div>
           </article>

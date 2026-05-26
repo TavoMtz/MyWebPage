@@ -103,6 +103,52 @@ document.querySelectorAll('.hero__badge').forEach((badge, i) => {
 console.log('%c🚀 Gustavo Martinez — Portfolio loaded',
   'color: #FFC107; font-weight: 700; font-size: 14px;');
 
+// ── Mobile Menu Toggle ─────────────────────────────────────
+(function () {
+  const toggle = document.getElementById('nav-toggle');
+  const menu   = document.getElementById('nav-menu');
+  if (!toggle || !menu) return;
+
+  function openMenu() {
+    menu.classList.add('is-open');
+    toggle.classList.add('is-active');
+    toggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    menu.classList.remove('is-open');
+    toggle.classList.remove('is-active');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    menu.classList.contains('is-open') ? closeMenu() : openMenu();
+  });
+
+  // Cerrar al hacer clic en cualquier enlace o botón del menú
+  menu.addEventListener('click', (e) => {
+    if (e.target.classList.contains('nav__link') || e.target.classList.contains('nav__cta') || e.target.closest('.nav__cta')) {
+      closeMenu();
+    }
+  });
+
+  // Cerrar al hacer clic fuera del menú
+  document.addEventListener('click', (e) => {
+    if (menu.classList.contains('is-open') && !menu.contains(e.target) && e.target !== toggle) {
+      closeMenu();
+    }
+  });
+
+  // Cerrar con tecla Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('is-open')) closeMenu();
+  });
+})();
+
+
 // ── Contact Modal & EmailJS ────────────────────────────────
 const btnContact = document.getElementById('nav-contact');
 const modal = document.getElementById('contact-modal');

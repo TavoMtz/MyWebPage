@@ -1,0 +1,302 @@
+/* =========================================================
+   RESPONSIVE.CSS — Mobile adaptations only (max-width: 768px)
+   Estrategia Desktop-First: este archivo SOLO se activa en móvil.
+   No modifica ningún estilo de escritorio.
+   ========================================================= */
+
+/* ─────────────────────────────────────────────────────────
+   1. NAVEGACIÓN — Menú Hamburguesa
+   ───────────────────────────────────────────────────────── */
+
+/* Botón hamburguesa: oculto por defecto en desktop */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  z-index: 1001;
+  position: relative;
+}
+
+.nav__toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--on-surface);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Animación X al abrir */
+.nav__toggle.is-active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav__toggle.is-active span:nth-child(2) {
+  opacity: 0;
+}
+.nav__toggle.is-active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+
+  /* Mostrar botón hamburguesa */
+  .nav__toggle {
+    display: flex;
+  }
+
+  /* Menú de enlaces: panel deslizable */
+  .nav__links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100dvh;
+    background: var(--surface-container-highest);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-10);
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1000;
+  }
+
+  .nav__links.is-open {
+    transform: translateX(0);
+  }
+
+  .nav__link {
+    font-size: var(--text-2xl);
+  }
+
+  .nav__cta {
+    margin-left: 0;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   2. HERO — Eliminar ilustración, apilar contenido
+   ───────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+
+  /* Apilar a una columna */
+  .hero__inner {
+    grid-template-columns: 1fr;
+    padding-block: var(--space-12);
+    gap: var(--space-8);
+    text-align: left;
+  }
+
+  /* Ocultar el bloque de código (ilustración) y los badges */
+  .hero__visual {
+    display: none;
+  }
+
+  /* Titular más compacto */
+  .hero__headline {
+    font-size: clamp(2.5rem, 11vw, 3.5rem);
+  }
+
+  .hero__description {
+    font-size: var(--text-base);
+    max-width: 100%;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   3. SOBRE MÍ — Texto primero, foto pequeña debajo
+   ───────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+
+  /* Cambiar a 1 columna e invertir orden: texto arriba, foto abajo */
+  .about__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  /* Mover la foto al fondo del contenedor */
+  .about__sticky {
+    position: static;
+    order: 2;
+  }
+
+  .about__content {
+    order: 1;
+  }
+
+  /* Foto pequeña y no invasiva */
+  .about__avatar-wrap {
+    width: 160px;
+    height: 160px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+
+  .about__lead {
+    font-size: var(--text-xl);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   4. EXPERIENCIA — Título centrado, lista vertical
+   ───────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+
+  /* Apilar header y timeline */
+  .experience__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  /* Centrar el encabezado */
+  .experience__header {
+    position: static;
+    text-align: center;
+  }
+
+  .experience__header .section-subtext {
+    margin-inline: auto;
+  }
+
+  /* Timeline items: apilar fecha y cuerpo verticalmente */
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .timeline-item__role {
+    font-size: var(--text-xl);
+  }
+
+  .timeline {
+    gap: var(--space-10);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   5. HABILIDADES — Bloques compactos en formato vertical
+   ───────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+
+  /* 1 columna */
+  .skills__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  /* Reducir padding interior para que no ocupen mucho */
+  .skill-block {
+    padding: var(--space-4);
+  }
+
+  .skill-block__list {
+    gap: var(--space-2);
+  }
+
+  .skill-item {
+    font-size: var(--text-sm);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   6. PROYECTOS — Tarjetas verticales con skeleton loader
+   ───────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+
+  /* 1 columna, sin el span de la primera tarjeta */
+  .projects__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .projects__grid .card:first-child {
+    grid-row: auto;
+  }
+
+  /* Normalizar aspect ratio de imagen del primer card */
+  .projects__grid .card:first-child .card__image-wrap {
+    aspect-ratio: 16 / 9;
+  }
+
+  /* Header de proyectos: apilar verticalmente */
+  .projects__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .card__title {
+    font-size: var(--text-xl);
+  }
+}
+
+/* ── Skeleton Loader para imágenes de tarjetas ── */
+.card__image-wrap.is-loading {
+  background: linear-gradient(
+    90deg,
+    var(--surface-container-high) 25%,
+    var(--surface-container-highest) 50%,
+    var(--surface-container-high) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ─────────────────────────────────────────────────────────
+   7. FOOTER — Adaptar al formato vertical
+   ───────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+
+  .footer__inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-4);
+  }
+
+  .footer__copy {
+    font-size: var(--text-xs);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   GLOBAL — Padding del contenedor en móvil
+   ───────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .container {
+    padding-inline: var(--space-4);
+  }
+
+  .section-heading {
+    font-size: var(--text-3xl);
+  }
+}
