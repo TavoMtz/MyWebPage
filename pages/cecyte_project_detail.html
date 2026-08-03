@@ -1,364 +1,1036 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CECyTE Admin – Proyecto</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root {
-  --surface:#131313;--surface-low:#1C1B1B;--surface-high:#2A2A2A;--surface-highest:#353534;
-  --primary:#FFE4AF;--primary-dim:#FABD00;--primary-container:#FFC107;
-  --secondary:#89D0ED;--tertiary:#B3F4E1;
-  --on-surface:#E5E2E1;--on-surface-variant:#D4C5AB;--outline:#9C8F78;
-  --radius:4px;--radius-md:6px;--radius-lg:10px;
-  --font:'Inter',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;
-  --gold-grad:linear-gradient(45deg,#FABD00,#FFE4AF);
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:16px;-webkit-font-smoothing:antialiased}
-body{font-family:var(--font);background:var(--surface);color:var(--on-surface);overflow-x:hidden}
-img{display:block;max-width:100%}
-a{color:inherit;text-decoration:none}
-ul{list-style:none}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CECyTE Admin – Proyecto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --surface: #131313;
+      --surface-low: #1C1B1B;
+      --surface-high: #2A2A2A;
+      --surface-highest: #353534;
+      --primary: #FFE4AF;
+      --primary-dim: #FABD00;
+      --primary-container: #FFC107;
+      --secondary: #89D0ED;
+      --tertiary: #B3F4E1;
+      --on-surface: #E5E2E1;
+      --on-surface-variant: #D4C5AB;
+      --outline: #9C8F78;
+      --radius: 4px;
+      --radius-md: 6px;
+      --radius-lg: 10px;
+      --font: 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --gold-grad: linear-gradient(45deg, #FABD00, #FFE4AF);
+    }
 
-/* ── NAV ── */
-.pnav{position:sticky;top:0;z-index:100;height:64px;background:rgba(19,19,19,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(79,70,50,.12);display:flex;align-items:center;padding:0 32px;gap:16px}
-.pnav__back{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--outline);transition:all .2s;cursor:pointer;text-decoration:none;padding:6px 12px;margin-left:-12px;border-radius:var(--radius-md);border:1px solid transparent;background:transparent}
-.pnav__back:hover{color:var(--on-surface);background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.1)}
-.pnav__back svg{width:16px;height:16px;flex-shrink:0}
-.pnav__sep{width:1px;height:20px;background:rgba(79,70,50,.25)}
-.pnav__title{font-size:.8rem;color:var(--on-surface-variant);font-weight:400}
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-/* ── HERO ── */
-.phero{position:relative;min-height:480px;display:flex;align-items:flex-end;overflow:hidden}
-.phero__bg{position:absolute;inset:0;background:url('https://i.imgur.com/placeholder.png') center/cover no-repeat,linear-gradient(135deg,rgba(250,189,0,.06) 0%,transparent 60%);filter:brightness(.35) saturate(.7)}
-.phero__bg-fallback{position:absolute;inset:0;background:linear-gradient(135deg,rgba(250,189,0,.04) 0%,rgba(137,208,237,.03) 100%)}
-.phero__grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(79,70,50,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(79,70,50,.06) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,transparent,rgba(0,0,0,.5) 40%,rgba(0,0,0,.5) 70%,transparent)}
-.phero__noise{position:absolute;inset:0;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")}
-.phero__content{position:relative;z-index:1;padding:64px 48px 48px;width:100%;max-width:900px}
-.phero__eyebrow{display:flex;align-items:center;gap:10px;font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--secondary);margin-bottom:20px}
-.phero__eyebrow::before{content:'';width:28px;height:1px;background:var(--secondary);opacity:.6}
-.phero__title{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--on-surface);margin-bottom:20px}
-.phero__title .gold{background:var(--gold-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.phero__desc{font-size:1.05rem;color:var(--on-surface-variant);line-height:1.7;max-width:60ch;margin-bottom:32px}
-.phero__tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
-.tag{display:inline-flex;align-items:center;font-size:.65rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;padding:3px 10px;border-radius:var(--radius);background:rgba(0,98,123,.3);color:#BAEAFF;transition:background .2s}
-.tag--gold{background:rgba(250,189,0,.12);color:var(--primary-container)}
-.tag--teal{background:rgba(0,77,64,.3);color:var(--tertiary)}
-.phero__actions{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font);font-size:.7rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;border-radius:var(--radius);padding:10px 20px;transition:all .2s;cursor:pointer;border:none;white-space:nowrap}
-.btn-primary{background:var(--gold-grad);color:#3F2E00}
-.btn-primary:hover{filter:brightness(1.1)}
-.btn-secondary{background:transparent;color:var(--primary);border:1px solid rgba(255,228,175,.25)}
-.btn-secondary:hover{background:var(--surface-high);border-color:rgba(255,228,175,.4)}
-.btn svg{width:15px;height:15px}
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased
+    }
 
-/* ── MAIN CONTENT ── */
-.pmain{max-width:900px;margin:0 auto;padding:0 32px 96px}
+    body {
+      font-family: var(--font);
+      background: var(--surface);
+      color: var(--on-surface);
+      overflow-x: hidden
+    }
 
-/* ── SECTION ── */
-.psection{padding:56px 0;border-top:1px solid rgba(79,70,50,.12)}
-.psection:first-child{border-top:none;padding-top:48px}
-.sec-label{display:inline-block;font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--secondary);margin-bottom:12px}
-.sec-title{font-size:1.5rem;font-weight:700;letter-spacing:-.01em;color:var(--on-surface);margin-bottom:16px}
-.sec-body{font-size:.95rem;color:var(--on-surface-variant);line-height:1.75;max-width:65ch}
+    img {
+      display: block;
+      max-width: 100%
+    }
 
-/* ── ERD CARD ── */
-.erd-card{margin-top:28px;background:var(--surface-low);border-radius:var(--radius-md);overflow:hidden;border:1px solid rgba(79,70,50,.15);position:relative}
-.erd-card__header{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(79,70,50,.12);background:rgba(0,0,0,.2)}
-.erd-card__dots{display:flex;gap:6px}
-.erd-card__dot{width:10px;height:10px;border-radius:50%}
-.erd-card__label{font-family:var(--mono);font-size:.65rem;color:var(--outline);letter-spacing:.05em}
-.erd-card__img{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,rgba(0,98,123,.15),rgba(137,208,237,.05));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.erd-card__img img{width:100%;height:100%;object-fit:cover;filter:brightness(.9) saturate(.85)}
-.erd-card__zoom{position:absolute;bottom:12px;right:12px;background:rgba(19,19,19,.8);border:1px solid rgba(79,70,50,.2);border-radius:var(--radius);padding:6px 10px;font-size:.65rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--on-surface-variant);backdrop-filter:blur(8px);cursor:pointer;transition:all .2s}
-.erd-card__zoom:hover{background:var(--surface-high);color:var(--on-surface)}
+    a {
+      color: inherit;
+      text-decoration: none
+    }
 
-/* ── PROCESS ── */
-.process-steps{display:flex;flex-direction:column;gap:0;margin-top:28px;position:relative}
-.process-steps::before{content:'';position:absolute;left:18px;top:36px;bottom:36px;width:1px;background:linear-gradient(to bottom,rgba(137,208,237,.3),rgba(179,244,225,.3),rgba(250,189,0,.2))}
-.pstep{display:flex;gap:24px;align-items:flex-start;padding:20px 0}
-.pstep__num{width:36px;height:36px;border-radius:50%;background:var(--surface-high);border:1px solid rgba(79,70,50,.2);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.7rem;font-weight:500;color:var(--secondary);flex-shrink:0;z-index:1;position:relative}
-.pstep__num.gold{border-color:rgba(250,189,0,.25);color:var(--primary-container);background:rgba(250,189,0,.06)}
-.pstep__num.teal{border-color:rgba(179,244,225,.2);color:var(--tertiary);background:rgba(0,77,64,.2)}
-.pstep__body{}
-.pstep__phase{font-size:.65rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--outline);margin-bottom:4px}
-.pstep__title{font-size:1rem;font-weight:600;color:var(--on-surface);margin-bottom:6px;letter-spacing:-.01em}
-.pstep__text{font-size:.875rem;color:var(--on-surface-variant);line-height:1.7}
+    ul {
+      list-style: none
+    }
 
-/* ── REQUIREMENTS ── */
-.req-tabs{display:flex;gap:4px;margin-top:24px;margin-bottom:20px;background:var(--surface-low);border-radius:var(--radius-md);padding:4px;width:fit-content}
-.req-tab{font-size:.7rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:7px 16px;border-radius:var(--radius);color:var(--on-surface-variant);cursor:pointer;transition:all .2s;border:none;background:none;font-family:var(--font)}
-.req-tab.active{background:var(--surface-highest);color:var(--on-surface)}
-.req-list{display:flex;flex-direction:column;gap:8px}
-.req-item{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;background:var(--surface-low);border-radius:var(--radius);border:1px solid rgba(79,70,50,.1);transition:border-color .2s}
-.req-item:hover{border-color:rgba(79,70,50,.22)}
-.req-item__id{font-family:var(--mono);font-size:.65rem;color:var(--secondary);flex-shrink:0;padding-top:2px;min-width:36px}
-.req-item__text{font-size:.875rem;color:var(--on-surface-variant);line-height:1.6}
-.req-panel{display:none}.req-panel.active{display:flex;flex-direction:column;gap:8px}
+    /* ── NAV ── */
+    .pnav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 64px;
+      background: rgba(19, 19, 19, .85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(79, 70, 50, .12);
+      display: flex;
+      align-items: center;
+      padding: 0 32px;
+      gap: 16px
+    }
 
-/* ── OUTCOMES ── */
-.outcomes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
-.outcome-card{background:var(--surface-low);border-radius:var(--radius-md);padding:20px 16px;border:1px solid rgba(79,70,50,.1);transition:border-color .2s,background .2s}
-.outcome-card:hover{background:var(--surface-high);border-color:rgba(79,70,50,.2)}
-.outcome-card__icon{width:32px;height:32px;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;margin-bottom:12px}
-.outcome-card__icon svg{width:16px;height:16px}
-.outcome-card__title{font-size:.8rem;font-weight:600;color:var(--on-surface);margin-bottom:6px;letter-spacing:-.01em}
-.outcome-card__text{font-size:.8rem;color:var(--on-surface-variant);line-height:1.6}
+    .pnav__back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--outline);
+      transition: all .2s;
+      cursor: pointer;
+      text-decoration: none;
+      padding: 6px 12px;
+      margin-left: -12px;
+      border-radius: var(--radius-md);
+      border: 1px solid transparent;
+      background: transparent
+    }
 
-/* ── FULLSCREEN MODAL ── */
-.fmodal{position:fixed;inset:0;background:rgba(13,13,13,.95);z-index:999;display:none;align-items:center;justify-content:center;backdrop-filter:blur(12px)}
-.fmodal.open{display:flex}
-.fmodal__inner{position:relative;max-width:90vw;max-height:90vh}
-.fmodal__inner img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:var(--radius-md)}
-.fmodal__close{position:absolute;top:-40px;right:0;background:var(--surface-high);border:1px solid rgba(79,70,50,.2);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--on-surface-variant);transition:all .2s;font-size:18px}
-.fmodal__close:hover{background:var(--surface-highest);color:var(--on-surface)}
+    .pnav__back:hover {
+      color: var(--on-surface);
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.1)
+    }
 
-/* ── FOOTER STRIP ── */
-.pfooter{border-top:1px solid rgba(79,70,50,.12);padding:32px 32px;display:flex;align-items:center;justify-content:space-between;max-width:900px;margin:0 auto;gap:16px;flex-wrap:wrap}
-.pfooter__label{font-size:.7rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--outline)}
-.pfooter__nav{display:flex;gap:8px}
+    .pnav__back svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0
+    }
 
-/* ── RESPONSIVE ── */
-@media(max-width:700px){
-  .phero__content{padding:48px 24px 36px}
-  .pmain{padding:0 20px 72px}
-  .outcomes-grid{grid-template-columns:1fr 1fr}
-  .pfooter{padding:24px 20px}
-  .pnav{padding:0 20px}
-}
-@media(max-width:480px){
-  .outcomes-grid{grid-template-columns:1fr}
-  .phero__title{font-size:1.8rem}
-  .req-tabs{width:100%}
-  .req-tab{flex:1;text-align:center}
-}
+    .pnav__sep {
+      width: 1px;
+      height: 20px;
+      background: rgba(79, 70, 50, .25)
+    }
 
-/* ── REVEAL ANIM ── */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-delay-1{transition-delay:80ms}
-.reveal-delay-2{transition-delay:160ms}
-.reveal-delay-3{transition-delay:240ms}
-</style>
+    .pnav__title {
+      font-size: .8rem;
+      color: var(--on-surface-variant);
+      font-weight: 400
+    }
+
+    /* ── HERO ── */
+    .phero {
+      position: relative;
+      min-height: 480px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden
+    }
+
+    .phero__bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://i.imgur.com/placeholder.png') center/cover no-repeat, linear-gradient(135deg, rgba(250, 189, 0, .06) 0%, transparent 60%);
+      filter: brightness(.35) saturate(.7)
+    }
+
+    .phero__bg-fallback {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(250, 189, 0, .04) 0%, rgba(137, 208, 237, .03) 100%)
+    }
+
+    .phero__grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(79, 70, 50, .06) 1px, transparent 1px), linear-gradient(90deg, rgba(79, 70, 50, .06) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, .5) 40%, rgba(0, 0, 0, .5) 70%, transparent)
+    }
+
+    .phero__noise {
+      position: absolute;
+      inset: 0;
+      opacity: .025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")
+    }
+
+    .phero__content {
+      position: relative;
+      z-index: 1;
+      padding: 64px 48px 48px;
+      width: 100%;
+      max-width: 900px
+    }
+
+    .phero__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 20px
+    }
+
+    .phero__eyebrow::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--secondary);
+      opacity: .6
+    }
+
+    .phero__title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -.02em;
+      line-height: 1.1;
+      color: var(--on-surface);
+      margin-bottom: 20px
+    }
+
+    .phero__title .gold {
+      background: var(--gold-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text
+    }
+
+    .phero__desc {
+      font-size: 1.05rem;
+      color: var(--on-surface-variant);
+      line-height: 1.7;
+      max-width: 60ch;
+      margin-bottom: 32px
+    }
+
+    .phero__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 32px
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      font-size: .65rem;
+      font-weight: 500;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: var(--radius);
+      background: rgba(0, 98, 123, .3);
+      color: #BAEAFF;
+      transition: background .2s
+    }
+
+    .tag--gold {
+      background: rgba(250, 189, 0, .12);
+      color: var(--primary-container)
+    }
+
+    .tag--teal {
+      background: rgba(0, 77, 64, .3);
+      color: var(--tertiary)
+    }
+
+    .phero__actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font);
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      padding: 10px 20px;
+      transition: all .2s;
+      cursor: pointer;
+      border: none;
+      white-space: nowrap
+    }
+
+    .btn-primary {
+      background: var(--gold-grad);
+      color: #3F2E00
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.1)
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary);
+      border: 1px solid rgba(255, 228, 175, .25)
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface-high);
+      border-color: rgba(255, 228, 175, .4)
+    }
+
+    .btn svg {
+      width: 15px;
+      height: 15px
+    }
+
+    /* ── MAIN CONTENT ── */
+    .pmain {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 32px 96px
+    }
+
+    /* ── SECTION ── */
+    .psection {
+      padding: 56px 0;
+      border-top: 1px solid rgba(79, 70, 50, .12)
+    }
+
+    .psection:first-child {
+      border-top: none;
+      padding-top: 48px
+    }
+
+    .sec-label {
+      display: inline-block;
+      font-size: .65rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 12px
+    }
+
+    .sec-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      color: var(--on-surface);
+      margin-bottom: 16px
+    }
+
+    .sec-body {
+      font-size: .95rem;
+      color: var(--on-surface-variant);
+      line-height: 1.75;
+      max-width: 65ch
+    }
+
+    /* ── ERD CARD ── */
+    .erd-card {
+      margin-top: 28px;
+      background: var(--surface-low);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid rgba(79, 70, 50, .15);
+      position: relative
+    }
+
+    .erd-card__header {
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(79, 70, 50, .12);
+      background: rgba(0, 0, 0, .2)
+    }
+
+    .erd-card__dots {
+      display: flex;
+      gap: 6px
+    }
+
+    .erd-card__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%
+    }
+
+    .erd-card__label {
+      font-family: var(--mono);
+      font-size: .65rem;
+      color: var(--outline);
+      letter-spacing: .05em
+    }
+
+    .erd-card__img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, rgba(0, 98, 123, .15), rgba(137, 208, 237, .05));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden
+    }
+
+    .erd-card__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(.9) saturate(.85)
+    }
+
+    .erd-card__zoom {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(19, 19, 19, .8);
+      border: 1px solid rgba(79, 70, 50, .2);
+      border-radius: var(--radius);
+      padding: 6px 10px;
+      font-size: .65rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--on-surface-variant);
+      backdrop-filter: blur(8px);
+      cursor: pointer;
+      transition: all .2s
+    }
+
+    .erd-card__zoom:hover {
+      background: var(--surface-high);
+      color: var(--on-surface)
+    }
+
+    /* ── PROCESS ── */
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 28px;
+      position: relative
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      left: 18px;
+      top: 36px;
+      bottom: 36px;
+      width: 1px;
+      background: linear-gradient(to bottom, rgba(137, 208, 237, .3), rgba(179, 244, 225, .3), rgba(250, 189, 0, .2))
+    }
+
+    .pstep {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      padding: 20px 0
+    }
+
+    .pstep__num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--surface-high);
+      border: 1px solid rgba(79, 70, 50, .2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: .7rem;
+      font-weight: 500;
+      color: var(--secondary);
+      flex-shrink: 0;
+      z-index: 1;
+      position: relative
+    }
+
+    .pstep__num.gold {
+      border-color: rgba(250, 189, 0, .25);
+      color: var(--primary-container);
+      background: rgba(250, 189, 0, .06)
+    }
+
+    .pstep__num.teal {
+      border-color: rgba(179, 244, 225, .2);
+      color: var(--tertiary);
+      background: rgba(0, 77, 64, .2)
+    }
+
+    .pstep__body {}
+
+    .pstep__phase {
+      font-size: .65rem;
+      font-weight: 500;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--outline);
+      margin-bottom: 4px
+    }
+
+    .pstep__title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--on-surface);
+      margin-bottom: 6px;
+      letter-spacing: -.01em
+    }
+
+    .pstep__text {
+      font-size: .875rem;
+      color: var(--on-surface-variant);
+      line-height: 1.7
+    }
+
+    /* ── REQUIREMENTS ── */
+    .req-tabs {
+      display: flex;
+      gap: 4px;
+      margin-top: 24px;
+      margin-bottom: 20px;
+      background: var(--surface-low);
+      border-radius: var(--radius-md);
+      padding: 4px;
+      width: fit-content
+    }
+
+    .req-tab {
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      border-radius: var(--radius);
+      color: var(--on-surface-variant);
+      cursor: pointer;
+      transition: all .2s;
+      border: none;
+      background: none;
+      font-family: var(--font)
+    }
+
+    .req-tab.active {
+      background: var(--surface-highest);
+      color: var(--on-surface)
+    }
+
+    .req-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px
+    }
+
+    .req-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      background: var(--surface-low);
+      border-radius: var(--radius);
+      border: 1px solid rgba(79, 70, 50, .1);
+      transition: border-color .2s
+    }
+
+    .req-item:hover {
+      border-color: rgba(79, 70, 50, .22)
+    }
+
+    .req-item__id {
+      font-family: var(--mono);
+      font-size: .65rem;
+      color: var(--secondary);
+      flex-shrink: 0;
+      padding-top: 2px;
+      min-width: 36px
+    }
+
+    .req-item__text {
+      font-size: .875rem;
+      color: var(--on-surface-variant);
+      line-height: 1.6
+    }
+
+    .req-panel {
+      display: none
+    }
+
+    .req-panel.active {
+      display: flex;
+      flex-direction: column;
+      gap: 8px
+    }
+
+    /* ── OUTCOMES ── */
+    .outcomes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 24px
+    }
+
+    .outcome-card {
+      background: var(--surface-low);
+      border-radius: var(--radius-md);
+      padding: 20px 16px;
+      border: 1px solid rgba(79, 70, 50, .1);
+      transition: border-color .2s, background .2s
+    }
+
+    .outcome-card:hover {
+      background: var(--surface-high);
+      border-color: rgba(79, 70, 50, .2)
+    }
+
+    .outcome-card__icon {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px
+    }
+
+    .outcome-card__icon svg {
+      width: 16px;
+      height: 16px
+    }
+
+    .outcome-card__title {
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--on-surface);
+      margin-bottom: 6px;
+      letter-spacing: -.01em
+    }
+
+    .outcome-card__text {
+      font-size: .8rem;
+      color: var(--on-surface-variant);
+      line-height: 1.6
+    }
+
+    /* ── FULLSCREEN MODAL ── */
+    .fmodal {
+      position: fixed;
+      inset: 0;
+      background: rgba(13, 13, 13, .95);
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(12px)
+    }
+
+    .fmodal.open {
+      display: flex
+    }
+
+    .fmodal__inner {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh
+    }
+
+    .fmodal__inner img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: var(--radius-md)
+    }
+
+    .fmodal__close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: var(--surface-high);
+      border: 1px solid rgba(79, 70, 50, .2);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--on-surface-variant);
+      transition: all .2s;
+      font-size: 18px
+    }
+
+    .fmodal__close:hover {
+      background: var(--surface-highest);
+      color: var(--on-surface)
+    }
+
+    /* ── FOOTER STRIP ── */
+    .pfooter {
+      border-top: 1px solid rgba(79, 70, 50, .12);
+      padding: 32px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 900px;
+      margin: 0 auto;
+      gap: 16px;
+      flex-wrap: wrap
+    }
+
+    .pfooter__label {
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--outline)
+    }
+
+    .pfooter__nav {
+      display: flex;
+      gap: 8px
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:700px) {
+      .phero__content {
+        padding: 48px 24px 36px
+      }
+
+      .pmain {
+        padding: 0 20px 72px
+      }
+
+      .outcomes-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .pfooter {
+        padding: 24px 20px
+      }
+
+      .pnav {
+        padding: 0 20px
+      }
+    }
+
+    @media(max-width:480px) {
+      .outcomes-grid {
+        grid-template-columns: 1fr
+      }
+
+      .phero__title {
+        font-size: 1.8rem
+      }
+
+      .req-tabs {
+        width: 100%
+      }
+
+      .req-tab {
+        flex: 1;
+        text-align: center
+      }
+    }
+
+    /* ── REVEAL ANIM ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .5s ease, transform .5s ease
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .reveal-delay-1 {
+      transition-delay: 80ms
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 160ms
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 240ms
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav class="pnav">
-  <a href="../index.html#projects" class="pnav__back">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-    Regresar
-  </a>
-  <div class="pnav__sep"></div>
-  <span class="pnav__title">CECyTE Admin Software</span>
-</nav>
+  <!-- NAV -->
+  <nav class="pnav">
+    <a href="../index.html#projects" class="pnav__back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6" />
+      </svg>
+      Regresar
+    </a>
+    <div class="pnav__sep"></div>
+    <span class="pnav__title">CECyTE Admin Software</span>
+  </nav>
 
-<!-- HERO -->
-<section class="phero">
-  <div class="phero__bg-fallback"></div>
-  <div class="phero__grid-lines"></div>
-  <div class="phero__noise"></div>
-  <div class="phero__content">
-    <div class="phero__eyebrow reveal">Proyecto académico · 2024</div>
-    <h1 class="phero__title reveal reveal-delay-1">CECyTE <span class="gold">Admin</span> Software</h1>
-    <p class="phero__desc reveal reveal-delay-2">School administration software definido mediante FR/NFR elicitation, stakeholder interviews y relational database design para CECyTE Puebla.</p>
-    <div class="phero__tags reveal reveal-delay-2">
-      <span class="tag tag--gold">MySQL</span>
-      <span class="tag">PHP</span>
-      <span class="tag">HTML / CSS</span>
-      <span class="tag tag--teal">MoProSoft</span>
-      <span class="tag">Normalización BD</span>
-      <span class="tag">Requerimientos</span>
+  <!-- HERO -->
+  <section class="phero">
+    <div class="phero__bg-fallback"></div>
+    <div class="phero__grid-lines"></div>
+    <div class="phero__noise"></div>
+    <div class="phero__content">
+      <div class="phero__eyebrow reveal">Proyecto académico · 2024</div>
+      <h1 class="phero__title reveal reveal-delay-1">CECyTE <span class="gold">Admin</span> Software</h1>
+      <p class="phero__desc reveal reveal-delay-2">School administration software definido mediante FR/NFR elicitation,
+        stakeholder interviews y relational database design para CECyTE Puebla.</p>
+      <div class="phero__tags reveal reveal-delay-2">
+        <span class="tag tag--gold">MySQL</span>
+        <span class="tag">PHP</span>
+        <span class="tag">HTML / CSS</span>
+        <span class="tag tag--teal">MoProSoft</span>
+        <span class="tag">Normalización BD</span>
+        <span class="tag">Requerimientos</span>
+      </div>
+      <div class="phero__actions reveal reveal-delay-3">
+        <a href="https://github.com/TavoMtz" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="text-decoration:none;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+          </svg>
+          Ver repositorio
+        </a>
+      </div>
     </div>
-    <div class="phero__actions reveal reveal-delay-3">
-      <button class="btn btn-primary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-        Ver repositorio
-      </button>
-      <button class="btn btn-secondary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Descargar docs
-      </button>
+  </section>
+
+  <!-- MAIN -->
+  <main class="pmain">
+
+    <!-- OVERVIEW -->
+    <section class="psection reveal">
+      <span class="sec-label">Contexto</span>
+      <h2 class="sec-title">¿Qué problema resuelve?</h2>
+      <p class="sec-body">CECyTE Puebla operaba sus procesos de inscripción, control escolar y gestión de planteles de
+        forma manual y fragmentada. El software centraliza la administración de aspirantes, estudiantes, periodos,
+        bajas, revalidaciones y carreras en un sistema relacional normalizado accesible desde cualquier plantel.</p>
+
+      <!-- ERD CARD -->
+      <div class="erd-card reveal reveal-delay-1">
+        <div class="erd-card__header">
+          <div class="erd-card__dots">
+            <div class="erd-card__dot" style="background:#ff5f57"></div>
+            <div class="erd-card__dot" style="background:#ffbd2e"></div>
+            <div class="erd-card__dot" style="background:#28c840"></div>
+          </div>
+          <span class="erd-card__label">cecyte_db.mwb — Modelo Entidad-Relación</span>
+          <button class="erd-card__zoom" id="zoomBtn">&#x26F6; Ampliar</button>
+        </div>
+        <div class="erd-card__img" id="erdWrap">
+          <!-- Reemplaza el src con la ruta real de tu imagen ERD -->
+          <img id="erdImg" src="../src/styles/imgs/ERD_CECYTE.png" alt="Diagrama Entidad-Relación CECyTE"
+            onerror="this.parentElement.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;width:100%;height:280px;\'><svg width=48 height=48 viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'rgba(137,208,237,.4)\' stroke-width=\'1.5\'><rect x=\'2\' y=\'3\' width=\'7\' height=\'7\' rx=\'1\'/><rect x=\'15\' y=\'3\' width=\'7\' height=\'7\' rx=\'1\'/><rect x=\'2\' y=\'14\' width=\'7\' height=\'7\' rx=\'1\'/><rect x=\'15\' y=\'14\' width=\'7\' height=\'7\' rx=\'1\'/><line x1=\'9\' y1=\'6.5\' x2=\'15\' y2=\'6.5\'/><line x1=\'9\' y1=\'17.5\' x2=\'15\' y2=\'17.5\'/><line x1=\'5.5\' y1=\'10\' x2=\'5.5\' y2=\'14\'/><line x1=\'18.5\' y1=\'10\' x2=\'18.5\' y2=\'14\'/></svg><span style=\'font-size:.75rem;color:rgba(156,143,120,.5);font-family:JetBrains Mono,monospace;\'>Reemplaza src con tu imagen ERD</span></div>'">
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="psection reveal">
+      <span class="sec-label">Metodología</span>
+      <h2 class="sec-title">Proceso de desarrollo</h2>
+      <p class="sec-body">El proyecto siguió un proceso estructurado desde la elicitación de requerimientos hasta la
+        entrega de documentación técnica.</p>
+
+      <div class="process-steps">
+        <div class="pstep reveal">
+          <div class="pstep__num">01</div>
+          <div class="pstep__body">
+            <div class="pstep__phase">Fase 1</div>
+            <div class="pstep__title">Stakeholder Interviews</div>
+            <div class="pstep__text">Entrevistas con personal administrativo de CECyTE para identificar pain points,
+              flujos existentes y necesidades no cubiertas del sistema actual.</div>
+          </div>
+        </div>
+        <div class="pstep reveal reveal-delay-1">
+          <div class="pstep__num"
+            style="border-color:rgba(137,208,237,.25);color:var(--secondary);background:rgba(0,98,123,.12)">02</div>
+          <div class="pstep__body">
+            <div class="pstep__phase">Fase 2</div>
+            <div class="pstep__title">Elicitación FR / NFR</div>
+            <div class="pstep__text">Definición de requerimientos funcionales y no funcionales usando plantillas
+              estructuradas. Clasificación por módulo: inscripción, control escolar, planteles y reportes.</div>
+          </div>
+        </div>
+        <div class="pstep reveal reveal-delay-2">
+          <div class="pstep__num teal">03</div>
+          <div class="pstep__body">
+            <div class="pstep__phase">Fase 3</div>
+            <div class="pstep__title">Diseño del modelo relacional</div>
+            <div class="pstep__text">Modelado de 15+ entidades normalizadas a 3FN: Aspirante, Estudiante, Periodo,
+              Plantel, Carrera, Baja, Revalidación, Estado/Municipio y tablas de relación.</div>
+          </div>
+        </div>
+        <div class="pstep reveal reveal-delay-3">
+          <div class="pstep__num gold">04</div>
+          <div class="pstep__body">
+            <div class="pstep__phase">Fase 4</div>
+            <div class="pstep__title">Documentación MoProSoft</div>
+            <div class="pstep__text">Aplicación del framework MoProSoft + CMMI al proceso de seguimiento académico de
+              internado médico hospitalario. Entrega de Section 4 documentation en inglés.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REQUIREMENTS -->
+    <section class="psection reveal">
+      <span class="sec-label">Especificaciones</span>
+      <h2 class="sec-title">Requerimientos del sistema</h2>
+      <p class="sec-body">Requerimientos levantados mediante entrevistas y validados con los stakeholders de CECyTE
+        Puebla.</p>
+
+      <div class="req-tabs">
+        <button class="req-tab active" onclick="switchTab(this,'fr')">Funcionales</button>
+        <button class="req-tab" onclick="switchTab(this,'nfr')">No Funcionales</button>
+      </div>
+
+      <div id="fr" class="req-panel active">
+        <div class="req-item"><span class="req-item__id">FR-01</span><span class="req-item__text">El sistema debe
+            permitir registrar aspirantes con datos personales, académicos y de contacto completos.</span></div>
+        <div class="req-item"><span class="req-item__id">FR-02</span><span class="req-item__text">El sistema debe
+            gestionar el proceso de inscripción vinculando aspirantes a periodos y planteles específicos.</span></div>
+        <div class="req-item"><span class="req-item__id">FR-03</span><span class="req-item__text">El sistema debe
+            registrar y consultar bajas de estudiantes con motivo, fecha y solicitud de certificado.</span></div>
+        <div class="req-item"><span class="req-item__id">FR-04</span><span class="req-item__text">El sistema debe
+            administrar revalidaciones académicas con créditos obtenidos y calificaciones de origen.</span></div>
+        <div class="req-item"><span class="req-item__id">FR-05</span><span class="req-item__text">El sistema debe
+            gestionar la oferta de carreras por plantel a través de la tabla Carrera_Plantel.</span></div>
+        <div class="req-item"><span class="req-item__id">FR-06</span><span class="req-item__text">El sistema debe
+            generar reportes de asistencia y calificaciones por periodo, grupo y materia.</span></div>
+      </div>
+
+      <div id="nfr" class="req-panel">
+        <div class="req-item"><span class="req-item__id" style="color:var(--tertiary)">NFR-01</span><span
+            class="req-item__text">Rendimiento: las consultas de listado de estudiantes deben responder en menos de 2
+            segundos con hasta 5,000 registros.</span></div>
+        <div class="req-item"><span class="req-item__id" style="color:var(--tertiary)">NFR-02</span><span
+            class="req-item__text">Seguridad: acceso por roles (administrador, docente, control escolar) con sesiones
+            autenticadas.</span></div>
+        <div class="req-item"><span class="req-item__id" style="color:var(--tertiary)">NFR-03</span><span
+            class="req-item__text">Disponibilidad: el sistema debe operar sin interrupciones durante el horario escolar
+            (7am – 9pm).</span></div>
+        <div class="req-item"><span class="req-item__id" style="color:var(--tertiary)">NFR-04</span><span
+            class="req-item__text">Usabilidad: la interfaz debe ser operable sin capacitación técnica por personal
+            administrativo no especializado.</span></div>
+        <div class="req-item"><span class="req-item__id" style="color:var(--tertiary)">NFR-05</span><span
+            class="req-item__text">Mantenibilidad: el código debe seguir convenciones de nomenclatura consistentes y
+            contar con documentación interna.</span></div>
+      </div>
+    </section>
+
+    <!-- OUTCOMES -->
+    <section class="psection reveal">
+      <span class="sec-label">Resultados</span>
+      <h2 class="sec-title">Qué entregamos</h2>
+      <p class="sec-body">El proyecto produjo un sistema completamente documentado, listo para implementación.</p>
+
+      <div class="outcomes-grid">
+        <div class="outcome-card reveal">
+          <div class="outcome-card__icon" style="background:rgba(250,189,0,.1)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FFC107" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <ellipse cx="12" cy="5" rx="9" ry="3" />
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+            </svg>
+          </div>
+          <div class="outcome-card__title">BD Normalizada</div>
+          <div class="outcome-card__text">15 tablas en 3FN con relaciones, índices y constraints bien definidos en MySQL
+            Workbench.</div>
+        </div>
+        <div class="outcome-card reveal reveal-delay-1">
+          <div class="outcome-card__icon" style="background:rgba(137,208,237,.08)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#89D0ED" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+              <polyline points="10 9 9 9 8 9" />
+            </svg>
+          </div>
+          <div class="outcome-card__title">Documentación técnica</div>
+          <div class="outcome-card__text">Section 4 con categorías de proceso MoProSoft, casos de uso y diccionario de
+            datos completo.</div>
+        </div>
+        <div class="outcome-card reveal reveal-delay-2">
+          <div class="outcome-card__icon" style="background:rgba(0,77,64,.25)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#B3F4E1" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg>
+          </div>
+          <div class="outcome-card__title">FR/NFR Elicitados</div>
+          <div class="outcome-card__text">30+ requerimientos levantados y priorizados mediante entrevistas con
+            stakeholders reales de CECyTE.</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER STRIP -->
+  <footer class="pfooter">
+    <span class="pfooter__label">CECyTE Admin Software · 2024</span>
+    <div class="pfooter__nav">
+      <a href="../index.html#projects" class="btn btn-secondary"
+        style="font-size:.65rem;padding:8px 14px;text-decoration:none;">← Volver a proyectos</a>
+    </div>
+  </footer>
+
+  <!-- FULLSCREEN MODAL -->
+  <div class="fmodal" id="fmodal" onclick="closeFModal(event)">
+    <div class="fmodal__inner">
+      <button class="fmodal__close" onclick="document.getElementById('fmodal').classList.remove('open')">✕</button>
+      <img id="fmodalImg" src="" alt="ERD Fullscreen">
     </div>
   </div>
-</section>
 
-<!-- MAIN -->
-<main class="pmain">
+  <script>
+    // Reveal on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  <!-- OVERVIEW -->
-  <section class="psection reveal">
-    <span class="sec-label">Contexto</span>
-    <h2 class="sec-title">¿Qué problema resuelve?</h2>
-    <p class="sec-body">CECyTE Puebla operaba sus procesos de inscripción, control escolar y gestión de planteles de forma manual y fragmentada. El software centraliza la administración de aspirantes, estudiantes, periodos, bajas, revalidaciones y carreras en un sistema relacional normalizado accesible desde cualquier plantel.</p>
+    // Req tabs
+    function switchTab(btn, panel) {
+      document.querySelectorAll('.req-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.req-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(panel).classList.add('active');
+    }
 
-    <!-- ERD CARD -->
-    <div class="erd-card reveal reveal-delay-1">
-      <div class="erd-card__header">
-        <div class="erd-card__dots">
-          <div class="erd-card__dot" style="background:#ff5f57"></div>
-          <div class="erd-card__dot" style="background:#ffbd2e"></div>
-          <div class="erd-card__dot" style="background:#28c840"></div>
-        </div>
-        <span class="erd-card__label">cecyte_db.mwb — Modelo Entidad-Relación</span>
-        <button class="erd-card__zoom" id="zoomBtn">&#x26F6; Ampliar</button>
-      </div>
-      <div class="erd-card__img" id="erdWrap">
-        <!-- Reemplaza el src con la ruta real de tu imagen ERD -->
-        <img id="erdImg" src="https://i.imgur.com/0lkMQsS.png" alt="Diagrama Entidad-Relación CECyTE" onerror="this.parentElement.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;width:100%;height:280px;\'><svg width=48 height=48 viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'rgba(137,208,237,.4)\' stroke-width=\'1.5\'><rect x=\'2\' y=\'3\' width=\'7\' height=\'7\' rx=\'1\'/><rect x=\'15\' y=\'3\' width=\'7\' height=\'7\' rx=\'1\'/><rect x=\'2\' y=\'14\' width=\'7\' height=\'7\' rx=\'1\'/><rect x=\'15\' y=\'14\' width=\'7\' height=\'7\' rx=\'1\'/><line x1=\'9\' y1=\'6.5\' x2=\'15\' y2=\'6.5\'/><line x1=\'9\' y1=\'17.5\' x2=\'15\' y2=\'17.5\'/><line x1=\'5.5\' y1=\'10\' x2=\'5.5\' y2=\'14\'/><line x1=\'18.5\' y1=\'10\' x2=\'18.5\' y2=\'14\'/></svg><span style=\'font-size:.75rem;color:rgba(156,143,120,.5);font-family:JetBrains Mono,monospace;\'>Reemplaza src con tu imagen ERD</span></div>'">
-      </div>
-    </div>
-  </section>
-
-  <!-- PROCESS -->
-  <section class="psection reveal">
-    <span class="sec-label">Metodología</span>
-    <h2 class="sec-title">Proceso de desarrollo</h2>
-    <p class="sec-body">El proyecto siguió un proceso estructurado desde la elicitación de requerimientos hasta la entrega de documentación técnica.</p>
-
-    <div class="process-steps">
-      <div class="pstep reveal">
-        <div class="pstep__num">01</div>
-        <div class="pstep__body">
-          <div class="pstep__phase">Fase 1</div>
-          <div class="pstep__title">Stakeholder Interviews</div>
-          <div class="pstep__text">Entrevistas con personal administrativo de CECyTE para identificar pain points, flujos existentes y necesidades no cubiertas del sistema actual.</div>
-        </div>
-      </div>
-      <div class="pstep reveal reveal-delay-1">
-        <div class="pstep__num" style="border-color:rgba(137,208,237,.25);color:var(--secondary);background:rgba(0,98,123,.12)">02</div>
-        <div class="pstep__body">
-          <div class="pstep__phase">Fase 2</div>
-          <div class="pstep__title">Elicitación FR / NFR</div>
-          <div class="pstep__text">Definición de requerimientos funcionales y no funcionales usando plantillas estructuradas. Clasificación por módulo: inscripción, control escolar, planteles y reportes.</div>
-        </div>
-      </div>
-      <div class="pstep reveal reveal-delay-2">
-        <div class="pstep__num teal">03</div>
-        <div class="pstep__body">
-          <div class="pstep__phase">Fase 3</div>
-          <div class="pstep__title">Diseño del modelo relacional</div>
-          <div class="pstep__text">Modelado de 15+ entidades normalizadas a 3FN: Aspirante, Estudiante, Periodo, Plantel, Carrera, Baja, Revalidación, Estado/Municipio y tablas de relación.</div>
-        </div>
-      </div>
-      <div class="pstep reveal reveal-delay-3">
-        <div class="pstep__num gold">04</div>
-        <div class="pstep__body">
-          <div class="pstep__phase">Fase 4</div>
-          <div class="pstep__title">Documentación MoProSoft</div>
-          <div class="pstep__text">Aplicación del framework MoProSoft + CMMI al proceso de seguimiento académico de internado médico hospitalario. Entrega de Section 4 documentation en inglés.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- REQUIREMENTS -->
-  <section class="psection reveal">
-    <span class="sec-label">Especificaciones</span>
-    <h2 class="sec-title">Requerimientos del sistema</h2>
-    <p class="sec-body">Requerimientos levantados mediante entrevistas y validados con los stakeholders de CECyTE Puebla.</p>
-
-    <div class="req-tabs">
-      <button class="req-tab active" onclick="switchTab(this,'fr')">Funcionales</button>
-      <button class="req-tab" onclick="switchTab(this,'nfr')">No Funcionales</button>
-    </div>
-
-    <div id="fr" class="req-panel active">
-      <div class="req-item"><span class="req-item__id">FR-01</span><span class="req-item__text">El sistema debe permitir registrar aspirantes con datos personales, académicos y de contacto completos.</span></div>
-      <div class="req-item"><span class="req-item__id">FR-02</span><span class="req-item__text">El sistema debe gestionar el proceso de inscripción vinculando aspirantes a periodos y planteles específicos.</span></div>
-      <div class="req-item"><span class="req-item__id">FR-03</span><span class="req-item__text">El sistema debe registrar y consultar bajas de estudiantes con motivo, fecha y solicitud de certificado.</span></div>
-      <div class="req-item"><span class="req-item__id">FR-04</span><span class="req-item__text">El sistema debe administrar revalidaciones académicas con créditos obtenidos y calificaciones de origen.</span></div>
-      <div class="req-item"><span class="req-item__id">FR-05</span><span class="req-item__text">El sistema debe gestionar la oferta de carreras por plantel a través de la tabla Carrera_Plantel.</span></div>
-      <div class="req-item"><span class="req-item__id">FR-06</span><span class="req-item__text">El sistema debe generar reportes de asistencia y calificaciones por periodo, grupo y materia.</span></div>
-    </div>
-
-    <div id="nfr" class="req-panel">
-      <div class="req-item"><span class="req-item__id" style="color:var(--tertiary)">NFR-01</span><span class="req-item__text">Rendimiento: las consultas de listado de estudiantes deben responder en menos de 2 segundos con hasta 5,000 registros.</span></div>
-      <div class="req-item"><span class="req-item__id" style="color:var(--tertiary)">NFR-02</span><span class="req-item__text">Seguridad: acceso por roles (administrador, docente, control escolar) con sesiones autenticadas.</span></div>
-      <div class="req-item"><span class="req-item__id" style="color:var(--tertiary)">NFR-03</span><span class="req-item__text">Disponibilidad: el sistema debe operar sin interrupciones durante el horario escolar (7am – 9pm).</span></div>
-      <div class="req-item"><span class="req-item__id" style="color:var(--tertiary)">NFR-04</span><span class="req-item__text">Usabilidad: la interfaz debe ser operable sin capacitación técnica por personal administrativo no especializado.</span></div>
-      <div class="req-item"><span class="req-item__id" style="color:var(--tertiary)">NFR-05</span><span class="req-item__text">Mantenibilidad: el código debe seguir convenciones de nomenclatura consistentes y contar con documentación interna.</span></div>
-    </div>
-  </section>
-
-  <!-- OUTCOMES -->
-  <section class="psection reveal">
-    <span class="sec-label">Resultados</span>
-    <h2 class="sec-title">Qué entregamos</h2>
-    <p class="sec-body">El proyecto produjo un sistema completamente documentado, listo para implementación.</p>
-
-    <div class="outcomes-grid">
-      <div class="outcome-card reveal">
-        <div class="outcome-card__icon" style="background:rgba(250,189,0,.1)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#FFC107" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-        </div>
-        <div class="outcome-card__title">BD Normalizada</div>
-        <div class="outcome-card__text">15 tablas en 3FN con relaciones, índices y constraints bien definidos en MySQL Workbench.</div>
-      </div>
-      <div class="outcome-card reveal reveal-delay-1">
-        <div class="outcome-card__icon" style="background:rgba(137,208,237,.08)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#89D0ED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        </div>
-        <div class="outcome-card__title">Documentación técnica</div>
-        <div class="outcome-card__text">Section 4 con categorías de proceso MoProSoft, casos de uso y diccionario de datos completo.</div>
-      </div>
-      <div class="outcome-card reveal reveal-delay-2">
-        <div class="outcome-card__icon" style="background:rgba(0,77,64,.25)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#B3F4E1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <div class="outcome-card__title">FR/NFR Elicitados</div>
-        <div class="outcome-card__text">30+ requerimientos levantados y priorizados mediante entrevistas con stakeholders reales de CECyTE.</div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<!-- FOOTER STRIP -->
-<footer class="pfooter">
-  <span class="pfooter__label">CECyTE Admin Software · 2024</span>
-  <div class="pfooter__nav">
-    <a href="../index.html#projects" class="btn btn-secondary" style="font-size:.65rem;padding:8px 14px;text-decoration:none;">← Volver a proyectos</a>
-    <button class="btn btn-primary" style="font-size:.65rem;padding:8px 14px">Siguiente proyecto →</button>
-  </div>
-</footer>
-
-<!-- FULLSCREEN MODAL -->
-<div class="fmodal" id="fmodal" onclick="closeFModal(event)">
-  <div class="fmodal__inner">
-    <button class="fmodal__close" onclick="document.getElementById('fmodal').classList.remove('open')">✕</button>
-    <img id="fmodalImg" src="" alt="ERD Fullscreen">
-  </div>
-</div>
-
-<script>
-// Reveal on scroll
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
-}, {threshold: 0.1});
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// Req tabs
-function switchTab(btn, panel) {
-  document.querySelectorAll('.req-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.req-panel').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById(panel).classList.add('active');
-}
-
-// Fullscreen ERD
-document.getElementById('zoomBtn').addEventListener('click', () => {
-  const src = document.getElementById('erdImg').src;
-  document.getElementById('fmodalImg').src = src;
-  document.getElementById('fmodal').classList.add('open');
-});
-function closeFModal(e) {
-  if(e.target === document.getElementById('fmodal')) document.getElementById('fmodal').classList.remove('open');
-}
-document.addEventListener('keydown', e => { if(e.key==='Escape') document.getElementById('fmodal').classList.remove('open') });
-</script>
+    // Fullscreen ERD
+    document.getElementById('zoomBtn').addEventListener('click', () => {
+      const src = document.getElementById('erdImg').src;
+      document.getElementById('fmodalImg').src = src;
+      document.getElementById('fmodal').classList.add('open');
+    });
+    function closeFModal(e) {
+      if (e.target === document.getElementById('fmodal')) document.getElementById('fmodal').classList.remove('open');
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('fmodal').classList.remove('open') });
+  </script>
 </body>
+
 </html>
