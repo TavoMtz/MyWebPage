@@ -51,6 +51,21 @@
   border-color: rgba(255, 228, 175, 0.4);
 }
 
+/* Gold Outline — Matches Contact Button Accent (smaller size) */
+.btn-gold-outline {
+  background: transparent;
+  color: var(--primary-dim);
+  border: 1px solid var(--primary-dim);
+  font-size: var(--text-xs);
+  padding: 6px 14px;
+}
+
+.btn-gold-outline:hover {
+  background: rgba(250, 189, 0, 0.12);
+  border-color: var(--primary-container);
+  color: var(--primary);
+}
+
 /* Tertiary — Text link style */
 .btn-tertiary {
   background: transparent;
