@@ -364,8 +364,13 @@
 
 .projects {
   background: var(--surface);
-  padding-block: var(--space-24);
+  padding-block: clamp(1.5rem, 3vh, 3rem);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
+  box-sizing: border-box;
 }
 
 .projects::before {
@@ -380,21 +385,22 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: var(--space-12);
+  margin-bottom: clamp(0.75rem, 2vh, 1.5rem);
 }
 
 .projects__grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: var(--space-4);
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(0.6rem, 1vw, 1rem);
 }
 
 .projects__grid .card:first-child {
-  grid-row: span 2;
+  grid-row: auto;
 }
 
 .projects__grid .card:first-child .card__image-wrap {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 16 / 9;
+  max-height: clamp(12vh, 20vh, 25vh);
 }
 
 .card-image-placeholder {

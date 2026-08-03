@@ -223,7 +223,19 @@
    6. PROYECTOS — Tarjetas verticales con skeleton loader
    ───────────────────────────────────────────────────────── */
 
+@media (min-width: 769px) and (max-width: 1100px) {
+  .projects__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+}
+
 @media (max-width: 768px) {
+
+  .projects {
+    min-height: auto;
+    padding-block: clamp(2rem, 5vh, 4rem);
+  }
 
   /* 1 columna, sin el span de la primera tarjeta */
   .projects__grid {
@@ -235,9 +247,11 @@
     grid-row: auto;
   }
 
-  /* Normalizar aspect ratio de imagen del primer card */
-  .projects__grid .card:first-child .card__image-wrap {
+  /* Normalizar aspect ratio e imagen del primer card */
+  .projects__grid .card:first-child .card__image-wrap,
+  .card__image-wrap {
     aspect-ratio: 16 / 9;
+    max-height: none;
   }
 
   /* Header de proyectos: apilar verticalmente */
