@@ -57,7 +57,7 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 // ── Card "Content Spotlight" cursor glow ──────────────────
-document.querySelectorAll('.card').forEach((card) => {
+document.querySelectorAll('.card, .service-card, .process-card').forEach((card) => {
   card.addEventListener('mousemove', (e) => {
     const rect = card.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -185,8 +185,16 @@ function closeModal() {
   }, 300);
 }
 
-if (btnContact && modal && btnCloseModal) {
-  btnContact.addEventListener('click', openModal);
+const btnOpenCta = document.getElementById('btn-open-contact-modal');
+
+if (modal && btnCloseModal) {
+  if (btnContact) btnContact.addEventListener('click', openModal);
+  if (btnOpenCta) btnOpenCta.addEventListener('click', openModal);
+  
+  document.querySelectorAll('[data-open-modal="contact-modal"]').forEach(btn => {
+    btn.addEventListener('click', openModal);
+  });
+
   btnCloseModal.addEventListener('click', closeModal);
   
   // Close on outside click

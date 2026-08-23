@@ -121,6 +121,28 @@
 }
 
 /* ─────────────────────────────────────────────────────────
+   2.1 SERVICIOS — Apilar tarjetas en móvil
+   ───────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .services {
+    padding-block: var(--space-16);
+  }
+
+  .services__grid {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .service-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: var(--space-6);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
    3. SOBRE MÍ — Texto primero, foto pequeña debajo
    ───────────────────────────────────────────────────────── */
 
@@ -284,20 +306,46 @@
 }
 
 /* ─────────────────────────────────────────────────────────
+   6.5 PROCESO — Grid responsive
+   ───────────────────────────────────────────────────────── */
+
+@media (max-width: 992px) {
+  .process__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 580px) {
+  .process__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
    7. FOOTER — Adaptar al formato vertical
    ───────────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
 
   .footer__inner {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    text-align: center;
     gap: var(--space-4);
   }
 
   .footer__copy {
     font-size: var(--text-xs);
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
   }
 }
 

@@ -47,7 +47,7 @@
     <nav class="nav" id="main-nav" aria-label="Navegación principal">
       <div class="container nav__inner">
         <a href="#hero" class="nav__logo" id="nav-logo">
-          GM<span>.</span>
+          GM<span class="accent-dot">.</span> <span class="nav__tagline">SOFTWARE SERVICES</span>
         </a>
 
         <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false"
@@ -58,14 +58,14 @@
         </button>
 
         <ul class="nav__links" id="nav-menu">
-          <li><a href="#about" class="nav__link" id="nav-about">Sobre mi</a></li>
-          <li><a href="#experience" class="nav__link" id="nav-experience">Experiencia</a></li>
-          <li><a href="#skills" class="nav__link" id="nav-skills">Habilidades</a></li>
+          <li><a href="#services" class="nav__link" id="nav-services">Servicios</a></li>
           <li><a href="#projects" class="nav__link" id="nav-projects">Proyectos</a></li>
+          <li><a href="#process" class="nav__link" id="nav-process">Proceso</a></li>
+          <li><a href="#about" class="nav__link" id="nav-about">Sobre mí</a></li>
           <li>
             <button class="btn btn-primary nav__cta" id="nav-contact" aria-haspopup="dialog" aria-expanded="false"
               aria-controls="contact-modal">
-              Contacto
+              Iniciar un proyecto
             </button>
           </li>
         </ul>
@@ -139,316 +139,205 @@
     </section>
 
     <!-- ======================== -->
-    <!-- ABOUT SECTION            -->
+    <!-- SERVICES SECTION         -->
     <!-- ======================== -->
-    <section class="about" id="about" aria-labelledby="about-heading">
-      <div class="container about__inner">
+    <section class="services" id="services" aria-labelledby="services-heading">
+      <div class="container services__inner">
 
-        <div class="about__sticky">
-          <div class="about__avatar-wrap reveal" id="about-avatar">
-            <img src="/src/styles/imgs/MiFotoProfecional2.jpeg" alt="">
-          </div>
-        </div>
-
-        <div class="about__content">
-          <span class="section-label reveal" id="about-label">Sobre mi</span>
-          <h2 class="section-heading reveal reveal-delay-1" id="about-heading">
-            Creando productos<br>
-            que <span class="accent-text">resuelven problemas reales.</span>
+        <div class="services__header">
+          <span class="section-label reveal" id="services-label">Nuestros servicios</span>
+          <h2 class="section-heading reveal reveal-delay-1" id="services-heading">
+            Soluciones digitales<br>
+            con <span class="accent-text">precisión técnica.</span>
           </h2>
-
-          <p class="about__lead reveal reveal-delay-2" id="about-lead">
-            Soy desarrollador de software con enfoque en
-            <span class="highlight"> aplicaciones full-stack</span>, AI-driven development ,
-            arquitectura y diseño de software para sistemas escalables.
-          </p>
-
-          <p class="about__body reveal reveal-delay-2" id="about-body">
-            He colaborado en equipos multidisciplinarios para construir productos reales:
-            desde sistemas web con roles y permisos en plataformas escolares, hasta un sistema IoT +
-            Machine Learning con 99.8% de precision en tiempo real.
-          </p>
-
-          <p class="about__stack-heading reveal reveal-delay-3" id="about-stack-heading">
-            Stack actual
-          </p>
-          <div class="about__stack-grid reveal reveal-delay-3" id="about-stack-grid">
-            <span class="tag">Angular</span>
-            <span class="tag">Node.js</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">Python (Flask)</span>
-            <span class="tag tag--teal">MySQL</span>
-            <span class="tag tag--teal">Machine Learning</span>
-            <span class="tag tag--gold">IoT</span>
-            <span class="tag tag--gold">SCRUM</span>
-          </div>
-        </div>
-    </section>
-
-    <!-- ======================== -->
-    <!-- EXPERIENCE SECTION       -->
-    <!-- ======================== -->
-    <section class="experience" id="experience" aria-labelledby="experience-heading">
-      <div class="container experience__inner">
-
-        <div class="experience__header">
-          <span class="section-label reveal" id="exp-label">Experiencia</span>
-          <h2 class="section-heading reveal reveal-delay-1" id="experience-heading">
-            Donde he<br>trabajado.
-          </h2>
-          <p class="section-subtext reveal reveal-delay-2" id="exp-subtext">
-            Experiencia aplicada en IoT, Machine Learning, Bases de Datos
-            y Sistemas Web para usuarios reales.
+          <p class="section-subtext reveal reveal-delay-2" id="services-subtext">
+            Servicios integrales de desarrollo, optimización y arquitectura para llevar tus productos digitales al
+            siguiente nivel.
           </p>
         </div>
 
-        <div class="timeline" id="experience-timeline">
+        <div class="services__grid" id="services-grid">
 
-          <article class="timeline-item reveal" id="exp-1">
-            <div class="timeline-item__meta">
-              <div class="timeline-item__date">Feb — Mar 2026</div>
-              <div class="timeline-item__company">Predictive Smart Greenhouse</div>
+          <!-- Servicio 1: Desarrollo de Sitios Web -->
+          <article class="service-card reveal" id="service-webdev">
+            <div class="service-card__icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
             </div>
-            <div class="timeline-item__body">
-              <h3 class="timeline-item__role">Full-Stack IoT &amp; ML Engineer</h3>
-              <ul class="timeline-item__points">
-                <li class="timeline-point">
-                  <svg class="timeline-point__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2" aria-hidden="true">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  <span>Desarrollé un backend con Flask que procesa datos en tiempo real desde Arduino via comunicacion
-                    serial.</span>
-                </li>
-                <li class="timeline-point">
-                  <svg class="timeline-point__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2" aria-hidden="true">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  <span>Entrené y desplegué un modelo Random Forest con 99.8% de precisión para predecir
-                    requerimientos de riego.</span>
-                </li>
-                <li class="timeline-point">
-                  <svg class="timeline-point__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2" aria-hidden="true">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  <span>Integré la API de Telegram para enviar mensajes y publiqué datos en un dashboard de monitoreo
-                    remoto usando Ngrok.</span>
-                </li>
-              </ul>
+            <h3 class="service-card__title">Desarrollo de Sitios Web</h3>
+            <p class="service-card__description">
+              Creación de aplicaciones web interactivas, landing pages de alto impacto y plataformas escalables,
+              combinando interfaces modernas con arquitectura sólida.
+            </p>
+            <div class="service-card__features">
+              <div class="service-card__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Apps Web &amp; SPAs Modernas</span>
+              </div>
+              <div class="service-card__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Arquitectura Frontend Limpia</span>
+              </div>
+              <div class="service-card__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Rendimiento y SEO Técnico</span>
+              </div>
             </div>
           </article>
 
-          <article class="timeline-item reveal reveal-delay-1" id="exp-2">
-            <div class="timeline-item__meta">
-              <div class="timeline-item__date">Jun — Dec 2025</div>
-              <div class="timeline-item__company">CECyTE Puebla</div>
+          <!-- Servicio 2: Optimizaciones UI/UX -->
+          <article class="service-card reveal reveal-delay-1" id="service-uiux">
+            <div class="service-card__icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="3" y1="9" x2="21" y2="9"></line>
+                <line x1="9" y1="21" x2="9" y2="9"></line>
+              </svg>
             </div>
-            <div class="timeline-item__body">
-              <h3 class="timeline-item__role">Requirements &amp; Architecture Contributor</h3>
-              <ul class="timeline-item__points">
-                <li class="timeline-point">
-                  <svg class="timeline-point__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2" aria-hidden="true">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  <span>Lideré la recoleccion de requeriemientos (FR/NFR). Realicé las entrevistas con los stakeholder,
-                    documente las reglas de negocio y casos de uso.</span>
-                </li>
-                <li class="timeline-point">
-                  <svg class="timeline-point__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2" aria-hidden="true">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  <span>Propuse la arquitectura MVC y co-diseñé el esquema de base de datos relacional
-                    adoptado por el equipo.</span>
-                </li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="timeline-item reveal reveal-delay-2" id="exp-3">
-            <div class="timeline-item__meta">
-              <div class="timeline-item__date">Feb — May 2025</div>
-              <div class="timeline-item__company">Kaffecito</div>
-            </div>
-            <div class="timeline-item__body">
-              <h3 class="timeline-item__role">Full-Stack Team Developer</h3>
-              <ul class="timeline-item__points">
-                <li class="timeline-point">
-                  <svg class="timeline-point__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2" aria-hidden="true">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  <span>Construimos un sistema web basado en roles para administradores, empleados y
-                    clientes.</span>
-                </li>
-                <li class="timeline-point">
-                  <svg class="timeline-point__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2" aria-hidden="true">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  <span>Implemento un sistema de ordenes y pagos , incluyendo checkout como invitado y con
-                    cuenta.</span>
-                </li>
-              </ul>
+            <h3 class="service-card__title">Optimizaciones UI/UX</h3>
+            <p class="service-card__description">
+              Rediseño y refinamiento de interfaces digitales para maximizar la usabilidad, accesibilidad y fluidez
+              mediante microinteracciones intuitivas.
+            </p>
+            <div class="service-card__features">
+              <div class="service-card__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Diseño Centrado en el Usuario</span>
+              </div>
+              <div class="service-card__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Microinteracciones Fluidas</span>
+              </div>
+              <div class="service-card__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Accesibilidad &amp; Responsividad</span>
+              </div>
             </div>
           </article>
 
-        </div>
-      </div>
-    </section>
+          <!-- Servicio 3: Gestión y Monitoreo -->
+          <article class="service-card reveal reveal-delay-2" id="service-monitoring">
+            <div class="service-card__icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Gestión y Monitoreo</h3>
+            <p class="service-card__description">
+              Implementación de dashboards interactivos, pipelines de datos en tiempo real y telemetría para supervisar
+              la salud y métricas de tus aplicaciones.
+            </p>
+            <div class="service-card__features">
+              <div class="service-card__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Dashboards en Tiempo Real</span>
+              </div>
+              <div class="service-card__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Integración de APIs &amp; Telemetría</span>
+              </div>
+              <div class="service-card__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Automatización y Alertas</span>
+              </div>
+            </div>
+          </article>
 
-    <!-- ======================== -->
-    <!-- SKILLS SECTION           -->
-    <!-- ======================== -->
-    <section class="skills" id="skills" aria-labelledby="skills-heading">
-      <div class="container">
-        <div class="skills__header">
-          <span class="section-label reveal" id="skills-label">Habilidades</span>
-          <h2 class="section-heading reveal reveal-delay-1" id="skills-heading">
-            Panorama completo.
-          </h2>
-        </div>
+          <!-- Servicio 4: Mantenimiento y Soporte (Software) -->
+          <article class="service-card reveal" id="service-maintenance">
+            <div class="service-card__icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path
+                  d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
+                </path>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Mantenimiento y Soporte (Software)</h3>
+            <p class="service-card__description">
+              Diagnóstico y resolución de incidencias, refactorización de código, actualización de librerías y
+              optimización de bases de datos para garantizar continuidad.
+            </p>
+            <div class="service-card__features">
+              <div class="service-card__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Corrección de Bugs &amp; Refactor</span>
+              </div>
+              <div class="service-card__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Optimización de Bases de Datos</span>
+              </div>
+              <div class="service-card__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Soporte Técnico Continuo</span>
+              </div>
+            </div>
+          </article>
 
-        <div class="skills__grid" id="skills-grid">
-
-          <div class="skill-block reveal" id="skill-webdesign">
-            <div class="skill-block__category">AI &amp; Data</div>
-            <ul class="skill-block__list">
-              <li class="skill-item">
-                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  aria-hidden="true">
+          <!-- Servicio 5: Consultorías y Estrategia -->
+          <article class="service-card reveal reveal-delay-1" id="service-consulting">
+            <div class="service-card__icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Consultorías y Estrategia</h3>
+            <p class="service-card__description">
+              Asesoría técnica integral para definir la arquitectura de software adecuada, elección óptima del stack
+              tecnológico y adopción de mejores prácticas.
+            </p>
+            <div class="service-card__features">
+              <div class="service-card__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
-                AI-Assisted Development
-              </li>
-              <li class="skill-item">
-                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  aria-hidden="true">
+                <span>Arquitectura de Software</span>
+              </div>
+              <div class="service-card__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
-                Machine Learning
-              </li>
-              <li class="skill-item">
-                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  aria-hidden="true">
+                <span>Selección de Stack &amp; Escalabilidad</span>
+              </div>
+              <div class="service-card__feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
-                Prompt Engineering
-              </li>
-              <li class="skill-item">
-                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                Data Structures
-              </li>
-            </ul>
-          </div>
-
-          <div class="skill-block reveal reveal-delay-1" id="skill-frontend">
-            <div class="skill-block__category">Frontend</div>
-            <ul class="skill-block__list">
-              <li class="skill-item">
-                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                Angular &amp; Next.js
-              </li>
-              <li class="skill-item">
-                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                TypeScript
-              </li>
-              <li class="skill-item">
-                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                HTML &amp; CSS
-              </li>
-              <li class="skill-item">
-                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                Prototyping (Figma)
-              </li>
-            </ul>
-          </div>
-
-          <div class="skill-block reveal reveal-delay-2" id="skill-backend">
-            <div class="skill-block__category">Backend</div>
-            <ul class="skill-block__list">
-              <li class="skill-item">
-                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                Python (Flask)
-              </li>
-              <li class="skill-item">
-                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                Node.js (Express)
-              </li>
-              <li class="skill-item">
-                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                MySQL &amp; SQL Design
-              </li>
-              <li class="skill-item">
-                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                MVC Architecture
-              </li>
-            </ul>
-          </div>
-
-          <div class="skill-block reveal reveal-delay-3" id="skill-soft">
-            <div class="skill-block__category">Soft Skills</div>
-            <ul class="skill-block__list">
-              <li class="skill-item">
-                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                SCRUM Methodology
-              </li>
-              <li class="skill-item">
-                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                Leadership
-              </li>
-              <li class="skill-item">
-                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                Communication
-              </li>
-              <li class="skill-item">
-                <svg class="skill-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                Teamwork
-              </li>
-            </ul>
-          </div>
+                <span>Metodologías Ágiles (SCRUM)</span>
+              </div>
+            </div>
+          </article>
 
         </div>
       </div>
@@ -469,7 +358,10 @@
           </div>
           <a href="pages/projects.html" class="btn btn-gold-outline reveal reveal-delay-2" id="btn-all-projects">
             Ver todos los proyectos
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 4px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              style="margin-left: 4px;">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
           </a>
         </div>
 
@@ -568,17 +460,184 @@
       </div>
     </section>
 
+    <!-- ======================== -->
+    <!-- PROCESS SECTION          -->
+    <!-- ======================== -->
+    <section class="process" id="process" aria-labelledby="process-heading">
+      <div class="container process__inner">
+
+        <div class="process__header">
+          <h2 class="section-heading reveal" id="process-heading">
+            Cómo trabajamos.
+          </h2>
+          <p class="section-subtext reveal reveal-delay-1" id="process-subtext">
+            Cuatro pasos, una entrega. Sin sorpresas en la factura ni en la fecha de entrega.
+          </p>
+        </div>
+
+        <div class="process__grid" id="process-grid">
+
+          <!-- Paso 1: Descubrir -->
+          <article class="process-card reveal" id="process-discover">
+            <div class="process-card__badge">01</div>
+            <h3 class="process-card__title">Descubrir</h3>
+            <p class="process-card__description">
+              Hablamos de tu problema, tus usuarios y las restricciones reales. Salimos de la llamada con un brief claro
+              y un alcance definido.
+            </p>
+          </article>
+
+          <!-- Paso 2: Diseñar -->
+          <article class="process-card reveal reveal-delay-1" id="process-design">
+            <div class="process-card__badge">02</div>
+            <h3 class="process-card__title">Diseñar</h3>
+            <p class="process-card__description">
+              Propongo arquitectura, modelo de datos y un plan por sprints. Tú apruebas antes de que se escriba la
+              primera línea de código.
+            </p>
+          </article>
+
+          <!-- Paso 3: Construir -->
+          <article class="process-card reveal reveal-delay-2" id="process-build">
+            <div class="process-card__badge">03</div>
+            <h3 class="process-card__title">Construir</h3>
+            <p class="process-card__description">
+              Implemento en sprints cortos con demos semanales. Tú ves progreso real, no slides.
+            </p>
+          </article>
+
+          <!-- Paso 4: Entregar -->
+          <article class="process-card reveal reveal-delay-3" id="process-deliver">
+            <div class="process-card__badge">04</div>
+            <h3 class="process-card__title">Entregar</h3>
+            <p class="process-card__description">
+              Deploy, documentación, handover a tu equipo. El software queda en un estado que otros pueden mantener.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== -->
+    <!-- ABOUT SECTION            -->
+    <!-- ======================== -->
+    <section class="about" id="about" aria-labelledby="about-heading">
+      <div class="container about__inner">
+
+        <div class="about__sticky">
+          <div class="about__avatar-wrap reveal" id="about-avatar">
+            <img src="src/styles/imgs/MiFotoProfecional2.jpeg" alt="Gustavo Martínez">
+          </div>
+        </div>
+
+        <div class="about__content">
+          <span class="section-label reveal" id="about-label">Sobre mi</span>
+          <h2 class="section-heading reveal reveal-delay-1" id="about-heading">
+            Creando productos<br>
+            que <span class="accent-text">resuelven problemas reales.</span>
+          </h2>
+
+          <p class="about__body reveal reveal-delay-2" id="about-p1">
+            Soy <strong>Gustavo Martínez</strong>, ingeniero de software con base en Puebla, México. Cuando me contratas
+            no te comunicas con un equipo ni con un account manager, te comunicas conmigo, el que escribe el código y
+            responde los mensajes.
+          </p>
+
+          <p class="about__body reveal reveal-delay-2" id="about-p2">
+            Trabajo remoto, en español y en inglés. Mi compromiso es entregar software que tu equipo pueda operar y
+            mantener, no solo código que funcione el día del demo. Por eso propongo arquitectura antes de escribir la
+            primera línea, y entrego con documentación.
+          </p>
+
+          <ul class="about__list reveal reveal-delay-3" id="about-list">
+            <li class="about__list-item">
+              <svg class="about__list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Un solo punto de contacto, de propuesta a deploy.</span>
+            </li>
+            <li class="about__list-item">
+              <svg class="about__list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Inglés B2 (TOEFL) · español nativo.</span>
+
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== -->
+    <!-- CONTACT / CTA SECTION    -->
+    <!-- ======================== -->
+    <section class="contact-cta" id="contact" aria-labelledby="contact-heading">
+      <div class="container contact-cta__inner">
+        <h2 class="contact-cta__heading reveal" id="contact-heading">
+          Hablemos de<br>
+          tu <span class="accent-text">proyecto.</span>
+        </h2>
+
+        <p class="contact-cta__subtext reveal reveal-delay-1" id="contact-subtext">
+          Cuéntame qué necesitas construir. Respondo en menos de 24 horas con<br>una primera lectura del alcance y los
+          siguientes pasos.
+        </p>
+
+        <ul class="contact-cta__list reveal reveal-delay-2" id="contact-cta-list">
+          <li class="contact-cta__item">
+            <svg class="contact-cta__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Respuesta en menos de 24 horas.</span>
+          </li>
+          <li class="contact-cta__item">
+            <svg class="contact-cta__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Sin compromiso: la primera llamada es gratis.</span>
+          </li>
+          <li class="contact-cta__item">
+            <svg class="contact-cta__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Remoto en México y LATAM.</span>
+          </li>
+        </ul>
+
+        <div class="contact-cta__actions reveal reveal-delay-3">
+          <button class="btn btn-primary contact-cta__btn" id="btn-open-contact-modal" aria-haspopup="dialog"
+            aria-expanded="false" aria-controls="contact-modal">
+            ENVIAR MENSAJE
+          </button>
+          <div id="contact-cta-email">
+            gustavoenriquemartinezmoreno@gmail.com
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- ======================== -->
   <!-- FOOTER                   -->
   <!-- ======================== -->
-  <footer class="footer layer-content" id="footer">
+  <footer class="footer" id="footer">
     <div class="container footer__inner">
-      <p class="footer__copy" id="footer-copy">
-        © 2026 Gustavo Enrique Martinez Moreno.
-      </p>
-      <nav class="footer__links" aria-label="Navegación del pie de página">
+      <div class="footer__left">
+        <div class="footer__brand">
+          <span class="footer__logo">GM<span class="accent-dot">.</span></span>
+        </div>
+        <p class="footer__copy" id="footer-copy">
+          © 2026 GM Software Services
+        </p>
+      </div>
+
+      <nav class="footer__links" aria-label="Enlaces del pie de página">
         <a href="https://github.com/TavoMtz" class="footer__link" id="footer-github" target="_blank"
           rel="noopener noreferrer">GitHub</a>
       </nav>
