@@ -106,7 +106,7 @@ console.log('%c🚀 Gustavo Martinez — Portfolio loaded',
 // ── Mobile Menu Toggle ─────────────────────────────────────
 (function () {
   const toggle = document.getElementById('nav-toggle');
-  const menu   = document.getElementById('nav-menu');
+  const menu = document.getElementById('nav-menu');
   if (!toggle || !menu) return;
 
   function openMenu() {
@@ -190,18 +190,18 @@ const btnOpenCta = document.getElementById('btn-open-contact-modal');
 if (modal && btnCloseModal) {
   if (btnContact) btnContact.addEventListener('click', openModal);
   if (btnOpenCta) btnOpenCta.addEventListener('click', openModal);
-  
+
   document.querySelectorAll('[data-open-modal="contact-modal"]').forEach(btn => {
     btn.addEventListener('click', openModal);
   });
 
   btnCloseModal.addEventListener('click', closeModal);
-  
+
   // Close on outside click
   modal.addEventListener('click', (e) => {
     if (e.target === modal) closeModal();
   });
-  
+
   // Close on Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('is-open')) {
@@ -211,34 +211,34 @@ if (modal && btnCloseModal) {
 }
 
 if (contactForm) {
-  contactForm.addEventListener('submit', function(event) {
+  contactForm.addEventListener('submit', function (event) {
     event.preventDefault();
-    
+
     // UI Loading state
     btnSubmit.classList.add('is-loading');
     btnSubmit.disabled = true;
     formStatus.className = 'form-status';
     formStatus.textContent = '';
-    
+
     // Send form data
     emailjs.sendForm('Trabajo_Email', 'Template_CasoContacto', this)
       .then(() => {
         // Success
         btnSubmit.classList.remove('is-loading');
         btnSubmit.disabled = false;
-        
+
         formStatus.textContent = '¡Mensaje enviado con éxito! Te contactaré pronto.';
         formStatus.className = 'form-status success';
-        
+
         contactForm.reset();
-        
+
         // Auto close after 3 seconds
         setTimeout(closeModal, 3000);
       }, (error) => {
         // Error
         btnSubmit.classList.remove('is-loading');
         btnSubmit.disabled = false;
-        
+
         const errorMsg = error && error.text ? error.text : 'Error desconocido.';
         formStatus.textContent = `Hubo un error al enviar el mensaje: ${errorMsg}`;
         formStatus.className = 'form-status error';
