@@ -1,0 +1,116 @@
+/* =========================================================
+   BUTTONS & TAGS (Flexbox)
+   ========================================================= */
+
+/* ── Base Button ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-family);
+  font-size: var(--text-sm);
+  font-weight: var(--font-label);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  padding: var(--space-3) var(--space-6);
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base),
+    filter var(--transition-base),
+    transform var(--transition-fast);
+  white-space: nowrap;
+  cursor: pointer;
+  border: none;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Primary CTA — Metallic Goldenrod */
+.btn-primary {
+  background: var(--gradient-gold);
+  color: var(--on-primary);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.10);
+}
+
+/* Secondary — Ghost */
+.btn-secondary {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid rgba(255, 228, 175, 0.25);
+}
+
+.btn-secondary:hover {
+  background: var(--surface-container-high);
+  border-color: rgba(255, 228, 175, 0.4);
+}
+
+/* Gold Outline — Contact & Action Buttons */
+.btn-gold-outline {
+  background: transparent;
+  color: var(--primary-dim);
+  border: 1px solid var(--primary-dim);
+  font-size: var(--text-xs);
+  padding: 6px 14px;
+}
+
+.btn-gold-outline:hover {
+  background: rgba(250, 189, 0, 0.12);
+  border-color: var(--primary-container);
+  color: var(--primary);
+}
+
+/* Tertiary — Text link style */
+.btn-tertiary {
+  background: transparent;
+  color: var(--secondary);
+  padding-inline: 0;
+  letter-spacing: var(--tracking-normal);
+  text-transform: none;
+  font-size: var(--text-base);
+  font-weight: var(--font-label);
+}
+
+.btn-tertiary::after {
+  content: ' →';
+  transition: transform var(--transition-base);
+  display: inline-block;
+}
+
+.btn-tertiary:hover::after {
+  transform: translateX(5px);
+}
+
+/* ── Tags / Chips ── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--text-xs);
+  font-weight: var(--font-label);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  padding: 3px var(--space-3);
+  border-radius: var(--radius);
+  background: rgba(0, 98, 123, 0.3);
+  color: var(--secondary-fixed);
+  transition: background var(--transition-base);
+}
+
+.tag:hover {
+  background: rgba(0, 98, 123, 0.5);
+}
+
+.tag--gold {
+  background: rgba(250, 189, 0, 0.15);
+  color: var(--primary-container);
+}
+
+.tag--teal {
+  background: rgba(0, 77, 64, 0.3);
+  color: var(--tertiary);
+}

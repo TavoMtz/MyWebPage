@@ -73,23 +73,6 @@ section {
   border: 0;
 }
 
-/* ── Scroll reveal base ── */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity var(--transition-slow), transform var(--transition-slow);
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-delay-1 { transition-delay: 80ms; }
-.reveal-delay-2 { transition-delay: 160ms; }
-.reveal-delay-3 { transition-delay: 240ms; }
-.reveal-delay-4 { transition-delay: 320ms; }
-
 /* ── Section Label ── */
 .section-label {
   display: inline-block;
@@ -157,9 +140,19 @@ section {
   top: 0;
 }
 
-
 /* ── Layering Utilities ── */
 .layer-content {
   position: relative;
   z-index: 1;
+}
+
+/* ── Global responsive container padding ── */
+@media (max-width: 768px) {
+  .container {
+    padding-inline: var(--space-4);
+  }
+
+  .section-heading {
+    font-size: var(--text-3xl);
+  }
 }

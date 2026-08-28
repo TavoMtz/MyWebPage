@@ -27,9 +27,17 @@
   <!-- Styles -->
   <link rel="stylesheet" href="src/styles/tokens.css">
   <link rel="stylesheet" href="src/styles/base.css">
-  <link rel="stylesheet" href="src/styles/components.css">
-  <link rel="stylesheet" href="src/styles/sections.css">
-  <link rel="stylesheet" href="src/styles/responsive.css">
+  <link rel="stylesheet" href="src/styles/animations.css">
+  <link rel="stylesheet" href="src/styles/buttons.css">
+  <link rel="stylesheet" href="src/styles/nav.css">
+  <link rel="stylesheet" href="src/styles/hero.css">
+  <link rel="stylesheet" href="src/styles/services.css">
+  <link rel="stylesheet" href="src/styles/projects.css">
+  <link rel="stylesheet" href="src/styles/process.css">
+  <link rel="stylesheet" href="src/styles/about.css">
+  <link rel="stylesheet" href="src/styles/contact.css">
+  <link rel="stylesheet" href="src/styles/footer.css">
+  <link rel="stylesheet" href="src/styles/modal.css">
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
@@ -65,7 +73,7 @@
           <li>
             <button class="btn btn-primary nav__cta" id="nav-contact" aria-haspopup="dialog" aria-expanded="false"
               aria-controls="contact-modal">
-              Iniciar un proyecto
+              Trabajemos Juntos
             </button>
           </li>
         </ul>
@@ -82,7 +90,7 @@
       <div class="container hero__inner">
 
         <div class="hero__content">
-          <p class="hero__eyebrow reveal" id="hero-eyebrow">Servicios de Software</p>
+          <p class=" reveal" id="hero-eyebrow">Servicios de Software</p>
 
           <h1 class="hero__headline reveal reveal-delay-1" id="hero-headline">
             Construyendo<br>
@@ -95,8 +103,8 @@
           </p>
 
           <div class="hero__actions reveal reveal-delay-3" id="hero-actions">
-            <a href="#projects" class="btn btn-primary" id="btn-view-work">Ver proyectos</a>
-            <a href="#about" class="btn btn-secondary" id="btn-about-me">Sobre mi</a>
+            <a href="#projects" class="btn btn-primary" id="btn-view-work">Proyectos Entregados</a>
+            <a href="#process" class="btn btn-secondary" id="btn-about-me">Como trabajamos</a>
           </div>
         </div>
 
@@ -369,8 +377,7 @@
 
           <article class="card reveal" id="project-apex" aria-label="Proyecto Predictive Smart Greenhouse">
             <div class="card__image-wrap is-loading">
-              <img src="/src/styles/imgs/Invernadero.jpeg" alt=""
-                onload="this.parentElement.classList.remove('is-loading')">
+              <img src="src/styles/imgs/Invernadero.jpeg" alt="">
             </div>
             <div class="card__body">
               <div class="card__tags">
@@ -392,8 +399,7 @@
 
           <article class="card reveal reveal-delay-1" id="project-vogue" aria-label="Proyecto CECyTE Admin Software">
             <div class="card__image-wrap is-loading">
-              <img src="/src/styles/imgs/ERD_CECYTE.png" alt=""
-                onload="this.parentElement.classList.remove('is-loading')">
+              <img src="src/styles/imgs/ERD_CECYTE.png" alt="">
             </div>
             <div class="card__body">
               <div class="card__tags">
@@ -413,8 +419,7 @@
 
           <article class="card reveal reveal-delay-2" id="project-ds" aria-label="Proyecto Kaffecito Management System">
             <div class="card__image-wrap is-loading">
-              <img src="/src/styles/imgs/Kaffecito.png" alt=""
-                onload="this.parentElement.classList.remove('is-loading')">
+              <img src="src/styles/imgs/Kaffecito.png" alt="">
             </div>
             <div class="card__body">
               <div class="card__tags">
@@ -435,8 +440,7 @@
           <article class="card reveal reveal-delay-3" id="project-mywebpage"
             aria-label="Proyecto MyWebPage Personal Site">
             <div class="card__image-wrap is-loading">
-              <img src="/src/styles/imgs/portadaMyPortafolio.png" alt=""
-                onload="this.parentElement.classList.remove('is-loading')">
+              <img src="src/styles/imgs/portadaMyPortafolio.png" alt="">
             </div>
             <div class="card__body">
               <div class="card__tags">

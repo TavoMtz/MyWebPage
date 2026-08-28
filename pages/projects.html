@@ -1,262 +1,566 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Todos los Proyectos — Gustavo Martínez</title>
-<link rel="icon" type="image/svg+xml" href="../src/styles/imgs/favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root {
-  --surface: #131313; --surface-low: #1C1B1B; --surface-high: #2A2A2A; --surface-highest: #353534;
-  --primary: #FFE4AF; --primary-dim: #FABD00; --primary-container: #FFC107;
-  --secondary: #89D0ED; --tertiary: #B3F4E1;
-  --on-surface: #E5E2E1; --on-surface-variant: #D4C5AB; --outline: #9C8F78;
-  --radius: 4px; --radius-md: 6px; --radius-lg: 10px;
-  --font: 'Inter', system-ui, sans-serif; --mono: 'JetBrains Mono', monospace;
-  --gold-grad: linear-gradient(45deg, #FABD00, #FFE4AF);
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { font-size: 16px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
-body { font-family: var(--font); background: var(--surface); color: var(--on-surface); overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
-img { display: block; max-width: 100%; }
-a { color: inherit; text-decoration: none; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todos los Proyectos - Gustavo Martínez</title>
+  <link rel="icon" type="image/svg+xml" href="../src/styles/imgs/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --surface: #131313;
+      --surface-low: #1C1B1B;
+      --surface-high: #2A2A2A;
+      --surface-highest: #353534;
+      --primary: #FFE4AF;
+      --primary-dim: #FABD00;
+      --primary-container: #FFC107;
+      --secondary: #89D0ED;
+      --tertiary: #B3F4E1;
+      --on-surface: #E5E2E1;
+      --on-surface-variant: #D4C5AB;
+      --outline: #9C8F78;
+      --radius: 4px;
+      --radius-md: 6px;
+      --radius-lg: 10px;
+      --font: 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --gold-grad: linear-gradient(45deg, #FABD00, #FFE4AF);
+    }
 
-/* NAV */
-.pnav{position:sticky;top:0;z-index:100;height:64px;background:rgba(19,19,19,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(79,70,50,.12);display:flex;align-items:center;padding:0 32px;gap:16px}
-.pnav__back{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--outline);transition:all .2s;cursor:pointer;text-decoration:none;padding:6px 12px;margin-left:-12px;border-radius:var(--radius-md);border:1px solid transparent;background:transparent}
-.pnav__back:hover{color:var(--on-surface);background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.1)}
-.pnav__back svg{width:16px;height:16px;flex-shrink:0}
-.pnav__sep{width:1px;height:20px;background:rgba(79,70,50,.25)}
-.pnav__title{font-size:.8rem;color:var(--on-surface-variant);font-weight:400}
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-/* HERO HEADER */
-.pheader { position: relative; padding: 64px 32px 40px; max-width: 1200px; margin: 0 auto; width: 100%; }
-.pheader__eyebrow { font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--secondary); margin-bottom: 12px; display: block; }
-.pheader__title { font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; letter-spacing: -.02em; color: var(--on-surface); margin-bottom: 16px; }
-.pheader__title .gold { background: var(--gold-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.pheader__desc { font-size: 1.05rem; color: var(--on-surface-variant); max-width: 65ch; line-height: 1.7; }
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
 
-/* FILTERS */
-.pfilters { max-width: 1200px; margin: 0 auto 40px; padding: 0 32px; width: 100%; display: flex; flex-wrap: wrap; gap: 10px; }
-.filter-btn { background: var(--surface-low); border: 1px solid rgba(79,70,50,.25); color: var(--on-surface-variant); padding: 8px 18px; border-radius: 999px; font-size: .78rem; font-weight: 500; cursor: pointer; transition: all .2s; }
-.filter-btn:hover { border-color: rgba(250,189,0,.4); color: var(--on-surface); }
-.filter-btn.active { background: var(--gold-grad); color: #3F2E00; border-color: transparent; font-weight: 600; }
+    body {
+      font-family: var(--font);
+      background: var(--surface);
+      color: var(--on-surface);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-/* PROJECTS GRID */
-.pcontainer { max-width: 1200px; margin: 0 auto; padding: 0 32px 96px; width: 100%; flex: 1; }
-.pgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 28px; }
+    img {
+      display: block;
+      max-width: 100%;
+    }
 
-/* CARD DESIGN */
-.pcard { background: var(--surface-low); border: 1px solid rgba(79,70,50,.2); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; transition: transform .3s cubic-bezier(0.16,1,0.3,1), border-color .3s, box-shadow .3s; }
-.pcard:hover { transform: translateY(-4px); border-color: rgba(250,189,0,.35); box-shadow: 0 12px 32px rgba(0,0,0,.4); }
-.pcard__img-wrap { position: relative; height: 210px; background: var(--surface-high); overflow: hidden; }
-.pcard__img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
-.pcard:hover .pcard__img-wrap img { transform: scale(1.04); }
-.pcard__body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
-.pcard__tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
-.tag { font-size: .65rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; padding: 3px 9px; border-radius: var(--radius); background: rgba(0,98,123,.3); color: #BAEAFF; }
-.tag--gold { background: rgba(250,189,0,.15); color: var(--primary-container); }
-.tag--teal { background: rgba(0,77,64,.35); color: var(--tertiary); }
-.pcard__title { font-size: 1.25rem; font-weight: 700; color: var(--on-surface); margin-bottom: 10px; line-height: 1.3; }
-.pcard__desc { font-size: .875rem; color: var(--on-surface-variant); line-height: 1.6; margin-bottom: 20px; flex: 1; }
-.pcard__footer { margin-top: auto; }
-.btn-tertiary { display: inline-flex; align-items: center; gap: 8px; font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--primary-dim); transition: gap .2s, color .2s; }
-.pcard:hover .btn-tertiary { color: var(--primary); gap: 12px; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-/* FOOTER */
-.pfooter { border-top: 1px solid rgba(79,70,50,.2); padding: 40px 32px; margin-top: auto; background: var(--surface-low); }
-.pfooter__inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: .8rem; color: var(--outline); font-family: var(--mono); }
+    /* NAV */
+    .pnav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 64px;
+      background: rgba(19, 19, 19, .85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(79, 70, 50, .12);
+      display: flex;
+      align-items: center;
+      padding: 0 32px;
+      gap: 16px
+    }
 
-@media(max-width: 768px) {
-  .pnav, .pheader, .pfilters, .pcontainer, .pfooter { padding-left: 20px; padding-right: 20px; }
-  .pgrid { grid-template-columns: 1fr; }
-}
-</style>
+    .pnav__back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--outline);
+      transition: all .2s;
+      cursor: pointer;
+      text-decoration: none;
+      padding: 6px 12px;
+      margin-left: -12px;
+      border-radius: var(--radius-md);
+      border: 1px solid transparent;
+      background: transparent
+    }
+
+    .pnav__back:hover {
+      color: var(--on-surface);
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.1)
+    }
+
+    .pnav__back svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0
+    }
+
+    .pnav__sep {
+      width: 1px;
+      height: 20px;
+      background: rgba(79, 70, 50, .25)
+    }
+
+    .pnav__title {
+      font-size: .8rem;
+      color: var(--on-surface-variant);
+      font-weight: 400
+    }
+
+    /* HERO HEADER */
+    .pheader {
+      position: relative;
+      padding: 64px 32px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .pheader__eyebrow {
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .pheader__title {
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -.02em;
+      color: var(--on-surface);
+      margin-bottom: 16px;
+    }
+
+    .pheader__title .gold {
+      background: var(--gold-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .pheader__desc {
+      font-size: 1.05rem;
+      color: var(--on-surface-variant);
+      max-width: 65ch;
+      line-height: 1.7;
+    }
+
+    /* FILTERS */
+    .pfilters {
+      max-width: 1200px;
+      margin: 0 auto 40px;
+      padding: 0 32px;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .filter-btn {
+      background: var(--surface-low);
+      border: 1px solid rgba(79, 70, 50, .25);
+      color: var(--on-surface-variant);
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: .78rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .filter-btn:hover {
+      border-color: rgba(250, 189, 0, .4);
+      color: var(--on-surface);
+    }
+
+    .filter-btn.active {
+      background: var(--gold-grad);
+      color: #3F2E00;
+      border-color: transparent;
+      font-weight: 600;
+    }
+
+    /* PROJECTS GRID */
+    .pcontainer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px 96px;
+      width: 100%;
+      flex: 1;
+    }
+
+    .pgrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 28px;
+    }
+
+    /* CARD DESIGN */
+    .pcard {
+      background: var(--surface-low);
+      border: 1px solid rgba(79, 70, 50, .2);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform .3s cubic-bezier(0.16, 1, 0.3, 1), border-color .3s, box-shadow .3s;
+    }
+
+    .pcard:hover {
+      transform: translateY(-4px);
+      border-color: rgba(250, 189, 0, .35);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, .4);
+    }
+
+    .pcard__img-wrap {
+      position: relative;
+      height: 210px;
+      background: var(--surface-high);
+      overflow: hidden;
+    }
+
+    .pcard__img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+
+    .pcard:hover .pcard__img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .pcard__body {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pcard__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .tag {
+      font-size: .65rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: var(--radius);
+      background: rgba(0, 98, 123, .3);
+      color: #BAEAFF;
+    }
+
+    .tag--gold {
+      background: rgba(250, 189, 0, .15);
+      color: var(--primary-container);
+    }
+
+    .tag--teal {
+      background: rgba(0, 77, 64, .35);
+      color: var(--tertiary);
+    }
+
+    .pcard__title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--on-surface);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .pcard__desc {
+      font-size: .875rem;
+      color: var(--on-surface-variant);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .pcard__footer {
+      margin-top: auto;
+    }
+
+    .btn-tertiary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--primary-dim);
+      transition: gap .2s, color .2s;
+    }
+
+    .pcard:hover .btn-tertiary {
+      color: var(--primary);
+      gap: 12px;
+    }
+
+    /* FOOTER */
+    .pfooter {
+      border-top: 1px solid rgba(79, 70, 50, .2);
+      padding: 40px 32px;
+      margin-top: auto;
+      background: var(--surface-low);
+    }
+
+    .pfooter__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: .8rem;
+      color: var(--outline);
+      font-family: var(--mono);
+    }
+
+    @media(max-width: 768px) {
+
+      .pnav,
+      .pheader,
+      .pfilters,
+      .pcontainer,
+      .pfooter {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .pgrid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<nav class="pnav">
-  <a href="../index.html" class="pnav__back">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-    Inicio
-  </a>
-  <div class="pnav__sep"></div>
-  <span class="pnav__title">Catálogo de Proyectos</span>
-</nav>
+  <nav class="pnav">
+    <a href="../index.html" class="pnav__back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7" />
+      </svg>
+      Inicio
+    </a>
+    <div class="pnav__sep"></div>
+    <span class="pnav__title">Catálogo de Proyectos</span>
+  </nav>
 
-<header class="pheader">
-  <span class="pheader__eyebrow">Catálogo Completo</span>
-  <h1 class="pheader__title">Todos los <span class="gold">Proyectos</span>.</h1>
-  <p class="pheader__desc">
-    Una muestra integral de mis proyectos de software: sistemas IoT con Machine Learning, arquitecturas MVC escolares, plataformas de gestión comercial y soluciones web interactivas con Flask y SQLite.
-  </p>
-</header>
+  <header class="pheader">
+    <span class="pheader__eyebrow">Catálogo Completo</span>
+    <h1 class="pheader__title">Todos los <span class="gold">Proyectos</span>.</h1>
+    <p class="pheader__desc">
+      Una muestra integral de mis proyectos de software: sistemas IoT con Machine Learning, arquitecturas MVC escolares,
+      plataformas de gestión comercial y soluciones web interactivas con Flask y SQLite.
+    </p>
+  </header>
 
-<div class="pfilters">
-  <button class="filter-btn active" data-filter="all">Todos (5)</button>
-  <button class="filter-btn" data-filter="fullstack">Full-Stack & Web</button>
-  <button class="filter-btn" data-filter="python">Python & Machine Learning</button>
-  <button class="filter-btn" data-filter="database">Bases de Datos & Arquitectura</button>
-</div>
-
-<main class="pcontainer">
-  <div class="pgrid" id="projects-grid">
-
-    <!-- PROJECT 1 -->
-    <article class="pcard" data-category="python">
-      <div class="pcard__img-wrap">
-        <img src="../src/styles/imgs/Invernadero.jpeg" alt="Predictive Smart Greenhouse">
-      </div>
-      <div class="pcard__body">
-        <div class="pcard__tags">
-          <span class="tag tag--gold">Destacado</span>
-          <span class="tag">Python</span>
-          <span class="tag">IoT & ML</span>
-        </div>
-        <h2 class="pcard__title">Predictive Smart Greenhouse</h2>
-        <p class="pcard__desc">
-          Sistema IoT full-stack que predice requerimientos de riego con datos ambientales en tiempo real, potenciado por un modelo Random Forest con 99.8% de precisión.
-        </p>
-        <div class="pcard__footer">
-          <a href="greenhouse_project_detail.html" class="btn-tertiary">
-            Ver detalle
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <!-- PROJECT 2 -->
-    <article class="pcard" data-category="database">
-      <div class="pcard__img-wrap">
-        <img src="../src/styles/imgs/ERD_CECYTE.png" alt="CECyTE Admin Software">
-      </div>
-      <div class="pcard__body">
-        <div class="pcard__tags">
-          <span class="tag">Requerimientos</span>
-          <span class="tag tag--teal">Base de Datos</span>
-          <span class="tag">MVC</span>
-        </div>
-        <h2 class="pcard__title">CECyTE Admin Software</h2>
-        <p class="pcard__desc">
-          Software de administración escolar definido mediante elicitación de requerimientos FR/NFR, entrevistas con stakeholders y diseño relacional de base de datos.
-        </p>
-        <div class="pcard__footer">
-          <a href="cecyte_project_detail.html" class="btn-tertiary">
-            Ver detalle
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <!-- PROJECT 3 -->
-    <article class="pcard" data-category="fullstack">
-      <div class="pcard__img-wrap">
-        <img src="../src/styles/imgs/Kaffecito.png" alt="Kaffecito Management System">
-      </div>
-      <div class="pcard__body">
-        <div class="pcard__tags">
-          <span class="tag">Full-Stack</span>
-          <span class="tag tag--teal">Modelado Figma</span>
-          <span class="tag">Roles</span>
-        </div>
-        <h2 class="pcard__title">Kaffecito Management System</h2>
-        <p class="pcard__desc">
-          Sistema de gestión web para cafetería con arquitectura multi-rol, control del ciclo de vida de órdenes e integración de flujos de pago.
-        </p>
-        <div class="pcard__footer">
-          <a href="kaffecito_project_detail.html" class="btn-tertiary">
-            Ver detalle
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <!-- PROJECT 4 (NEW WEDDING INVITATION) -->
-    <article class="pcard" data-category="python fullstack database">
-      <div class="pcard__img-wrap">
-        <img src="../src/styles/imgs/BodaPrecentacion.png" alt="Invitación Web Interactiva de Boda">
-      </div>
-      <div class="pcard__body">
-        <div class="pcard__tags">
-          <span class="tag tag--gold">Flask & SQLite</span>
-          <span class="tag">Python</span>
-          <span class="tag tag--teal">particles.js</span>
-        </div>
-        <h2 class="pcard__title">Invitación Web de Boda</h2>
-        <p class="pcard__desc">
-          Aplicación web interactiva desarrollada con Flask y SQLite3 para la confirmación de asistencia en tiempo real, validación anti-duplicados y partículas animadas.
-        </p>
-        <div class="pcard__footer">
-          <a href="wedding_invitation_project_detail.html" class="btn-tertiary">
-            Ver detalle
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <!-- PROJECT 5 -->
-    <article class="pcard" data-category="fullstack">
-      <div class="pcard__img-wrap">
-        <img src="../src/styles/imgs/portadaMyPortafolio.png" alt="MyWebPage Portfolio">
-      </div>
-      <div class="pcard__body">
-        <div class="pcard__tags">
-          <span class="tag">HTML5 / CSS3</span>
-          <span class="tag tag--teal">Vanilla JS</span>
-          <span class="tag tag--gold">EmailJS</span>
-        </div>
-        <h2 class="pcard__title">MyWebPage Portfolio</h2>
-        <p class="pcard__desc">
-          Portafolio web personal e interactivo optimizado para alto rendimiento, diseño responsivo moderno y arquitectura semántica.
-        </p>
-        <div class="pcard__footer">
-          <a href="mywebpage_project_detail.html" class="btn-tertiary">
-            Ver detalle
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-    </article>
-
+  <div class="pfilters">
+    <button class="filter-btn active" data-filter="all">Todos (5)</button>
+    <button class="filter-btn" data-filter="fullstack">Full-Stack & Web</button>
+    <button class="filter-btn" data-filter="python">Python & Machine Learning</button>
+    <button class="filter-btn" data-filter="database">Bases de Datos & Arquitectura</button>
   </div>
-</main>
 
-<footer class="pfooter">
-  <div class="pfooter__inner">
-    <span>© 2026 Gustavo Enrique Martínez Moreno. Todos los derechos reservados.</span>
-    <a href="../index.html" class="pnav__back">Volver al inicio</a>
-  </div>
-</footer>
+  <main class="pcontainer">
+    <div class="pgrid" id="projects-grid">
 
-<script>
-// Filter interaction
-const filterBtns = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.pcard');
+      <!-- PROJECT 1 -->
+      <article class="pcard" data-category="python">
+        <div class="pcard__img-wrap">
+          <img src="../src/styles/imgs/Invernadero.jpeg" alt="Predictive Smart Greenhouse">
+        </div>
+        <div class="pcard__body">
+          <div class="pcard__tags">
+            <span class="tag tag--gold">Destacado</span>
+            <span class="tag">Python</span>
+            <span class="tag">IoT & ML</span>
+          </div>
+          <h2 class="pcard__title">Predictive Smart Greenhouse</h2>
+          <p class="pcard__desc">
+            Sistema IoT full-stack que predice requerimientos de riego con datos ambientales en tiempo real, potenciado
+            por un modelo Random Forest con 99.8% de precisión.
+          </p>
+          <div class="pcard__footer">
+            <a href="greenhouse_project_detail.html" class="btn-tertiary">
+              Ver detalle
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
 
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    
-    const filter = btn.getAttribute('data-filter');
+      <!-- PROJECT 2 -->
+      <article class="pcard" data-category="database">
+        <div class="pcard__img-wrap">
+          <img src="../src/styles/imgs/ERD_CECYTE.png" alt="CECyTE Admin Software">
+        </div>
+        <div class="pcard__body">
+          <div class="pcard__tags">
+            <span class="tag">Requerimientos</span>
+            <span class="tag tag--teal">Base de Datos</span>
+            <span class="tag">MVC</span>
+          </div>
+          <h2 class="pcard__title">CECyTE Admin Software</h2>
+          <p class="pcard__desc">
+            Software de administración escolar definido mediante elicitación de requerimientos FR/NFR, entrevistas con
+            stakeholders y diseño relacional de base de datos.
+          </p>
+          <div class="pcard__footer">
+            <a href="cecyte_project_detail.html" class="btn-tertiary">
+              Ver detalle
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
 
-    projectCards.forEach(card => {
-      const categories = card.getAttribute('data-category').split(' ');
-      if (filter === 'all' || categories.includes(filter)) {
-        card.style.display = 'flex';
-      } else {
-        card.style.display = 'none';
-      }
+      <!-- PROJECT 3 -->
+      <article class="pcard" data-category="fullstack">
+        <div class="pcard__img-wrap">
+          <img src="../src/styles/imgs/Kaffecito.png" alt="Kaffecito Management System">
+        </div>
+        <div class="pcard__body">
+          <div class="pcard__tags">
+            <span class="tag">Full-Stack</span>
+            <span class="tag tag--teal">Modelado Figma</span>
+            <span class="tag">Roles</span>
+          </div>
+          <h2 class="pcard__title">Kaffecito Management System</h2>
+          <p class="pcard__desc">
+            Sistema de gestión web para cafetería con arquitectura multi-rol, control del ciclo de vida de órdenes e
+            integración de flujos de pago.
+          </p>
+          <div class="pcard__footer">
+            <a href="kaffecito_project_detail.html" class="btn-tertiary">
+              Ver detalle
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 4 (NEW WEDDING INVITATION) -->
+      <article class="pcard" data-category="python fullstack database">
+        <div class="pcard__img-wrap">
+          <img src="../src/styles/imgs/BodaPrecentacion.png" alt="Invitación Web Interactiva de Boda">
+        </div>
+        <div class="pcard__body">
+          <div class="pcard__tags">
+            <span class="tag tag--gold">Flask & SQLite</span>
+            <span class="tag">Python</span>
+            <span class="tag tag--teal">particles.js</span>
+          </div>
+          <h2 class="pcard__title">Invitación Web de Boda</h2>
+          <p class="pcard__desc">
+            Aplicación web interactiva desarrollada con Flask y SQLite3 para la confirmación de asistencia en tiempo
+            real, validación anti-duplicados y partículas animadas.
+          </p>
+          <div class="pcard__footer">
+            <a href="wedding_invitation_project_detail.html" class="btn-tertiary">
+              Ver detalle
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 5 -->
+      <article class="pcard" data-category="fullstack">
+        <div class="pcard__img-wrap">
+          <img src="../src/styles/imgs/portadaMyPortafolio.png" alt="MyWebPage Portfolio">
+        </div>
+        <div class="pcard__body">
+          <div class="pcard__tags">
+            <span class="tag">HTML5 / CSS3</span>
+            <span class="tag tag--teal">Vanilla JS</span>
+            <span class="tag tag--gold">EmailJS</span>
+          </div>
+          <h2 class="pcard__title">MyWebPage Portfolio</h2>
+          <p class="pcard__desc">
+            Portafolio web personal e interactivo optimizado para alto rendimiento, diseño responsivo moderno y
+            arquitectura semántica.
+          </p>
+          <div class="pcard__footer">
+            <a href="mywebpage_project_detail.html" class="btn-tertiary">
+              Ver detalle
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <footer class="pfooter">
+    <div class="pfooter__inner">
+      <span>© 2026 Gustavo Enrique Martínez Moreno. Todos los derechos reservados.</span>
+      <a href="../index.html" class="pnav__back">Volver al inicio</a>
+    </div>
+  </footer>
+
+  <script>
+    // Filter interaction
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.pcard');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        projectCards.forEach(card => {
+          const categories = card.getAttribute('data-category').split(' ');
+          if (filter === 'all' || categories.includes(filter)) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
     });
-  });
-});
-</script>
+  </script>
 
 </body>
+
 </html>

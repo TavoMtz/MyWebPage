@@ -67,6 +67,20 @@ document.querySelectorAll('.card, .service-card, .process-card').forEach((card) 
   });
 });
 
+// ── Card Image Skeleton Loading Handler ───────────────────
+document.querySelectorAll('.card__image-wrap img').forEach((img) => {
+  if (img.complete) {
+    img.parentElement.classList.remove('is-loading');
+  } else {
+    img.addEventListener('load', () => {
+      img.parentElement.classList.remove('is-loading');
+    });
+    img.addEventListener('error', () => {
+      img.parentElement.classList.remove('is-loading');
+    });
+  }
+});
+
 // ── Hero headline text reveal clip animation ──────────────
 const heroHeadline = document.getElementById('hero-headline');
 
