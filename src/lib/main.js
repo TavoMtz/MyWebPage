@@ -81,21 +81,6 @@ document.querySelectorAll('.card__image-wrap img').forEach((img) => {
   }
 });
 
-// ── Hero headline text reveal clip animation ──────────────
-const heroHeadline = document.getElementById('hero-headline');
-
-if (heroHeadline) {
-  heroHeadline.style.clipPath = 'inset(0 100% 0 0)';
-  heroHeadline.style.transition = 'clip-path 700ms cubic-bezier(0.16, 1, 0.3, 1)';
-
-  // Trigger after a short delay so the element is painted
-  requestAnimationFrame(() => {
-    setTimeout(() => {
-      heroHeadline.style.clipPath = 'inset(0 0% 0 0)';
-    }, 300);
-  });
-}
-
 // ── Smooth anchor scroll with offset ─────────────────────
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener('click', (e) => {
@@ -107,11 +92,6 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     const top = target.getBoundingClientRect().top + window.scrollY - offset;
     window.scrollTo({ top, behavior: 'smooth' });
   });
-});
-
-// ── Staggered badge animations (reset on load) ────────────
-document.querySelectorAll('.hero__badge').forEach((badge, i) => {
-  badge.style.animationDelay = `${i * 0.5}s`;
 });
 
 console.log('%c🚀 Gustavo Martinez — Portfolio loaded',
