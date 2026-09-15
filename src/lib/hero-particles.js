@@ -32,7 +32,8 @@
     retina_detect: true
   });
 
-  const instance = window.pJSDom.find(entry => entry.pJS.canvas.el.parentElement === container)?.pJS;
+  const instanceEntry = window.pJSDom.find(entry => entry.pJS.canvas.el.parentElement === container);
+  const instance = instanceEntry && instanceEntry.pJS;
   if (!instance) return;
 
   let inView = false;
@@ -50,7 +51,22 @@
     instance.particles.move.enable = shouldRun;
     window.cancelRequestAnimFrame(instance.fn.drawAnimFrame);
     instance.fn.drawAnimFrame = null;
-    if (shouldRun) instance.fn.vendors.draw();
+    if (shouldRun) {
+      instance.fn.vendors.draw();
+    } else {
+      // Safari can pause the first animation frame while the address bar settles.
+      // Paint the current particles once so reduced-motion and offscreen states
+      // retain the decorative background.
+      instance.fn.particlesDraw();
+    }
+  }
+
+  function observeMediaQuery(query, callback) {
+    if (typeof query.addEventListener === 'function') {
+      query.addEventListener('change', callback);
+    } else if (typeof query.addListener === 'function') {
+      query.addListener(callback);
+    }
   }
 
   const observer = new IntersectionObserver(([entry]) => {
@@ -60,8 +76,8 @@
   observer.observe(hero);
 
   document.addEventListener('visibilitychange', updatePlayback);
-  reducedMotion.addEventListener('change', updatePlayback);
-  mobile.addEventListener('change', () => {
+  observeMediaQuery(reducedMotion, updatePlayback);
+  observeMediaQuery(mobile, () => {
     const nextOpacity = mobile.matches ? mobileOpacity : opacity;
     const opacityRatio = nextOpacity / instance.particles.opacity.value;
     instance.particles.array.forEach(particle => { particle.opacity *= opacityRatio; });
@@ -71,10 +87,12 @@
     instance.fn.vendors.densityAutoParticles();
     if (!running) instance.fn.particlesDraw();
   });
-  toggle?.addEventListener('click', () => {
-    userPaused = !userPaused;
-    updatePlayback();
-  });
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      userPaused = !userPaused;
+      updatePlayback();
+    });
+  }
   updatePlayback();
   }
 

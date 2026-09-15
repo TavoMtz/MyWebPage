@@ -26,6 +26,7 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.3), #000);
   mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.3), #000);
 }
 
@@ -245,6 +246,7 @@
   .hero__services li:last-child { grid-column: 1 / -1; }
   .hero__services li + li::before { content: none; }
   .hero__particles {
+    -webkit-mask-image: linear-gradient(180deg, #000, rgba(0, 0, 0, 0.85) 40%, rgba(0, 0, 0, 0.4) 65%, #000);
     mask-image: linear-gradient(180deg, #000, rgba(0, 0, 0, 0.85) 40%, rgba(0, 0, 0, 0.4) 65%, #000);
   }
   .hero__motion { right: 12px; bottom: 8px; }
