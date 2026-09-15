@@ -74,14 +74,16 @@ Defined centrally in `src/styles/tokens.css` via `:root`:
 
 ### Navigation Bar (`#main-nav`)
 - **Branding:** `GM.` logo with Solar Amber accent dot + `SOFTWARE SERVICES` tag.
-- **Glassmorphism:** `background: rgba(19, 19, 19, 0.75)` with `backdrop-filter: blur(20px)`.
+- **Scroll appearance:** Fully transparent at the top, integrated with the hero. Beyond 32px of scroll, `.is-scrolled` fades in a separate dark glass background (`rgba(19, 19, 19, 0.92)`, 24px blur). Returning to the top removes it. Reduced motion disables the transition; the mobile menu retains its own opaque background.
 - **Links:** Uppercase Inter, hover color shift to `#FFC107` with underline animation.
 - **CTA:** `Iniciar un proyecto` button in Solar Amber.
 
 ### Hero Section (`#hero`)
-- Left-aligned bold headline with text-reveal clip path.
-- Floating status badge ("Disponible para nuevos proyectos").
-- Primary button + secondary ghost actions.
+- Editorial typography-led composition with a broad, left-aligned Inter 800 headline: "Tu próximo proyecto / empieza aquí." Solid Solar Amber emphasizes "aquí."; no heading hover glow.
+- Compact description alongside a primary contact modal button and secondary "Ver proyectos" text link. Smaller screens stack the supporting content and actions.
+- Specialties list: Desarrollo web, Sistemas de gestión, Arquitectura de software. No availability badge.
+- Local particles.js 2.0.0 background: small amber dots, fine translucent connections and slow movement. Fade intensity behind the text; keep the canvas behind all controls. Lower density on mobile, static reduced-motion rendering, manual pause/resume, and automatic pause offscreen or in hidden tabs.
+- Styles live in `src/styles/hero.css`. A short entrance reveal respects reduced-motion preferences.
 
 ### Nuestros Servicios (`#services`)
 - **Layout:** Flexbox grid with 5 cards in 2 balanced rows (3 top, 2 centered bottom).
@@ -102,6 +104,7 @@ Defined centrally in `src/styles/tokens.css` via `:root`:
 - **Layout:** Asymmetric split: sticky column with professional portrait on the left; narrative, credentials, and language proficiency on the right.
 
 ### Contacto / CTA (`#contact`)
+- **Background:** Amber particles echo the hero with lower density and opacity, faded behind the centered content. Independent pause/resume control; static reduced-motion rendering and automatic pause offscreen or in hidden tabs. Shared initializer: `src/lib/hero-particles.js`.
 - **Layout:** Centered high-impact block: massive headline (`Hablemos de tu proyecto.`), 3 trust bullet points with teal checks, and horizontal action buttons (`ENVIAR MENSAJE` modal trigger + direct email).
 
 ### Footer (`#footer`)

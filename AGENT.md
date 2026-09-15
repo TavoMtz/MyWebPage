@@ -9,11 +9,14 @@ Welcome to the **MyWebPage (GM. SOFTWARE SERVICES)** portfolio project workspace
 The single-page portfolio (`index.html`) follows this exact semantic sequence:
 
 1. **Header / Navigation (`#main-nav`):**
+   - Transparent at the top; fades in a dark background after 32px of scroll using `.is-scrolled`. Initialize on load and page restoration. Keep visual styling in `src/styles/nav.css`.
    - Branding: `GM.` with Solar Amber accent dot + `SOFTWARE SERVICES` subtitle tag.
    - Links: `Servicios` (`#services`), `Proyectos` (`#projects`), `Proceso` (`#process`), `Sobre mí` (`#about`).
    - Primary Action Button: `Iniciar un proyecto` (triggers `#contact-modal`).
 2. **Hero Section (`#hero`):**
-   - Primary headline with animated text-reveal, availability status indicator badge, and direct call-to-actions.
+   - Editorial headline: `Tu próximo proyecto / empieza aquí.`, solid amber emphasis, compact description, contact modal CTA and project link.
+   - Typography-led composition with a specialties list, responsive stacking and reduced-motion support. Styles live in `src/styles/hero.css`.
+   - Local particles.js 2.0.0 adds a subtle amber background, configured in `src/lib/hero-particles.js`. Keep it behind content, non-interactive, lower-density on mobile, static for reduced motion, and paused offscreen or in hidden tabs. Preserve the pause control.
 3. **Nuestros Servicios (`#services`):**
    - 5 service offerings arranged using Flexbox in 2 balanced rows (3 top, 2 centered bottom).
    - Compact cards with integrated horizontal header (SVG icon + title), concise description, and bulleted features.
@@ -25,6 +28,7 @@ The single-page portfolio (`index.html`) follows this exact semantic sequence:
 6. **Sobre mí (`#about`):**
    - Editorial split layout: portrait photo sticky column on the left, first-person narrative and value proposition on the right.
 7. **Contacto / Hablemos de tu proyecto (`#contact`):**
+   - Subtle amber particles reuse the hero initializer with lower density (40 desktop / 18 mobile) and opacity, independent pause control, reduced-motion support and offscreen pause.
    - Centered high-impact closing section: large headline with gold accent, 3 bulleted trust factors with checks (`✓`), and primary action buttons (`ENVIAR MENSAJE` + direct email).
 8. **Footer (`#footer`):**
    - Left: `GM.` logo + `© 2026 GM Software Services`.

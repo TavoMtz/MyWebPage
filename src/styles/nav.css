@@ -9,11 +9,29 @@
   right: 0;
   z-index: 100;
   height: var(--nav-height);
-  background: rgba(53, 53, 52, 0.6);
+  background: transparent;
+}
+
+/* Keep the glass layer separate so the mobile menu stays viewport-sized. */
+.nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: rgba(19, 19, 19, 0.92);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(79, 70, 50, 0.12);
-  transition: background var(--transition-base);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.nav.is-scrolled::before {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav::before { transition: none; }
 }
 
 .nav__inner {

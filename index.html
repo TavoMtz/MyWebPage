@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="src/styles/base.css">
   <link rel="stylesheet" href="src/styles/animations.css">
   <link rel="stylesheet" href="src/styles/buttons.css">
-  <link rel="stylesheet" href="src/styles/nav.css">
+  <link rel="stylesheet" href="src/styles/nav.css?v=transparent-header">
   <link rel="stylesheet" href="src/styles/hero.css">
   <link rel="stylesheet" href="src/styles/services.css">
   <link rel="stylesheet" href="src/styles/projects.css">
@@ -40,7 +40,9 @@
   <link rel="stylesheet" href="src/styles/modal.css">
 
   <!-- Scripts -->
-  <script src="src/lib/main.js" defer></script>
+  <script src="src/lib/vendor/particles.js" defer></script>
+  <script src="src/lib/hero-particles.js" defer></script>
+  <script src="src/lib/main.js?v=transparent-header" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
 </head>
 
@@ -86,29 +88,38 @@
     <!-- ======================== -->
     <!-- HERO SECTION             -->
     <!-- ======================== -->
-    <section class="hero" id="hero" aria-label="Introducción principal">
+    <section class="hero" id="hero" aria-labelledby="hero-headline">
+      <div id="particles-js" class="hero__particles" aria-hidden="true"></div>
       <div class="container hero__inner">
 
         <div class="hero__content">
-          <p class="hero__eyebrow" id="hero-eyebrow">Servicios de Software</p>
-
           <h1 class="hero__headline" id="hero-headline">
-            Construyendo<br>
-            <span class="accent">Software</span><br>
-            Inteligente.
+            <span class="hero__line">Tu próximo proyecto</span>
+            <span class="hero__line">empieza <span class="accent">aquí.</span></span>
           </h1>
 
+          <div class="hero__details">
           <p class="hero__description" id="hero-description">
-            Ingeniero de software enfocado en apps full-stack y arquitectura de software para resolver problemas reales.
+            Diseño y desarrollo aplicaciones web y software a medida para tu negocio. Trabajo contigo desde la primera idea hasta la entrega.
           </p>
 
           <div class="hero__actions" id="hero-actions">
-            <a href="#projects" class="btn btn-primary" id="btn-view-work">Proyectos Entregados</a>
-            <a href="#process" class="btn btn-secondary" id="btn-about-me">Cómo trabajamos</a>
+            <button type="button" class="btn btn-primary" id="hero-contact" data-open-modal="contact-modal"
+              aria-haspopup="dialog" aria-controls="contact-modal">Hablemos de tu proyecto</button>
+            <a href="#projects" class="hero__project-link" id="btn-view-work">Ver proyectos
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+            </a>
           </div>
+          </div>
+          <ul class="hero__services" aria-label="Especialidades">
+            <li>Desarrollo web</li>
+            <li>Sistemas de gestión</li>
+            <li>Arquitectura de software</li>
+          </ul>
         </div>
 
       </div>
+      <button type="button" class="hero__motion" id="hero-motion" hidden>Pausar animación</button>
     </section>
 
     <!-- ======================== -->
@@ -532,6 +543,8 @@
     <!-- CONTACT / CTA SECTION    -->
     <!-- ======================== -->
     <section class="contact-cta" id="contact" aria-labelledby="contact-heading">
+      <div id="contact-particles" class="contact-cta__particles" aria-hidden="true"></div>
+      <button type="button" class="contact-cta__motion" id="contact-motion" hidden>Pausar animación</button>
       <div class="container contact-cta__inner">
         <h2 class="contact-cta__heading reveal" id="contact-heading">
           Hablemos de<br>

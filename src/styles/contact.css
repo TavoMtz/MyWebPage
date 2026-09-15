@@ -3,6 +3,8 @@
    ========================================================= */
 
 .contact-cta {
+  isolation: isolate;
+  overflow: hidden;
   background: var(--surface);
   padding-block: clamp(4rem, 9vh, 7.5rem);
   min-height: 85vh;
@@ -28,6 +30,8 @@
 }
 
 .contact-cta__inner {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,6 +39,40 @@
   max-width: 820px;
   margin-inline: auto;
   width: 100%;
+}
+
+.contact-cta__particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.25), #000);
+}
+
+.contact-cta__particles canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.contact-cta__motion {
+  position: absolute;
+  z-index: 2;
+  right: var(--space-6);
+  bottom: var(--space-3);
+  padding: var(--space-3);
+  border: 0;
+  background: transparent;
+  color: var(--on-surface-variant);
+  font: inherit;
+  font-size: var(--text-xs);
+  cursor: pointer;
+}
+
+.contact-cta__motion:hover { color: var(--primary-container); }
+.contact-cta__motion:focus-visible {
+  outline: 2px solid var(--primary-container);
+  outline-offset: 2px;
 }
 
 .contact-cta__heading {

@@ -48,13 +48,13 @@ sections.forEach((s) => sectionObserver.observe(s));
 // ── Nav scroll state ──────────────────────────────────────
 const nav = document.getElementById('main-nav');
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 32) {
-    nav.style.background = 'rgba(19, 19, 19, 0.85)';
-  } else {
-    nav.style.background = 'rgba(53, 53, 52, 0.6)';
-  }
-}, { passive: true });
+function updateNavScrollState() {
+  nav?.classList.toggle('is-scrolled', window.scrollY > 32);
+}
+
+window.addEventListener('scroll', updateNavScrollState, { passive: true });
+window.addEventListener('pageshow', updateNavScrollState);
+updateNavScrollState();
 
 // ── Card "Content Spotlight" cursor glow ──────────────────
 document.querySelectorAll('.card, .service-card, .process-card').forEach((card) => {
