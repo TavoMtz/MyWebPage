@@ -79,6 +79,8 @@ Defined centrally in `src/styles/tokens.css` via `:root`:
 - **CTA:** `Iniciar un proyecto` button in Solar Amber.
 
 ### Hero Section (`#hero`)
+- **Viewport height (all sizes):** Full initial viewport with `min-height: 100svh`; center content below the fixed header and allow natural growth on short screens or enlarged text. Mobile uses the stable viewport with browser controls visible. Preserve the desktop horizontal composition and mobile stacked layout.
+- **Mobile (≤768px):** Deliberate three-line title, larger proportional type, compact description, full-width primary button, centered project link and specialties in two rows. Hero particles use density setting 56 and opacity 0.62 with a stronger mask; desktop retains 65 and 0.42. Contact particles are unchanged.
 - Editorial typography-led composition with a broad, left-aligned Inter 800 headline: "Tu próximo proyecto / empieza aquí." Solid Solar Amber emphasizes "aquí."; no heading hover glow.
 - Compact description alongside a primary contact modal button and secondary "Ver proyectos" text link. Smaller screens stack the supporting content and actions.
 - Specialties list: Desarrollo web, Sistemas de gestión, Arquitectura de software. No availability badge.

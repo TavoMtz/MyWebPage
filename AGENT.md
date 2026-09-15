@@ -14,6 +14,8 @@ The single-page portfolio (`index.html`) follows this exact semantic sequence:
    - Links: `Servicios` (`#services`), `Proyectos` (`#projects`), `Proceso` (`#process`), `Sobre mí` (`#about`).
    - Primary Action Button: `Iniciar un proyecto` (triggers `#contact-modal`).
 2. **Hero Section (`#hero`):**
+   - Desktop and mobile: minimum height `100svh`, vertically centered below the transparent fixed header, allowed to grow when content requires it. Mobile uses the stable small viewport to account for browser controls without scroll-driven height jumps.
+   - Mobile only (≤768px): three-line headline, shorter description, full-width CTA with centered secondary link, and specialties grouped over two rows. Increase mobile particle visibility while preserving the desktop layout and particle settings.
    - Editorial headline: `Tu próximo proyecto / empieza aquí.`, solid amber emphasis, compact description, contact modal CTA and project link.
    - Typography-led composition with a specialties list, responsive stacking and reduced-motion support. Styles live in `src/styles/hero.css`.
    - Local particles.js 2.0.0 adds a subtle amber background, configured in `src/lib/hero-particles.js`. Keep it behind content, non-interactive, lower-density on mobile, static for reduced motion, and paused offscreen or in hidden tabs. Preserve the pause control.

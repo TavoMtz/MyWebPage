@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="src/styles/animations.css">
   <link rel="stylesheet" href="src/styles/buttons.css">
   <link rel="stylesheet" href="src/styles/nav.css?v=transparent-header">
-  <link rel="stylesheet" href="src/styles/hero.css">
+  <link rel="stylesheet" href="src/styles/hero.css?v=fullscreen-all">
   <link rel="stylesheet" href="src/styles/services.css">
   <link rel="stylesheet" href="src/styles/projects.css">
   <link rel="stylesheet" href="src/styles/process.css">
@@ -41,7 +41,7 @@
 
   <!-- Scripts -->
   <script src="src/lib/vendor/particles.js" defer></script>
-  <script src="src/lib/hero-particles.js" defer></script>
+  <script src="src/lib/hero-particles.js?v=mobile-editorial" defer></script>
   <script src="src/lib/main.js?v=transparent-header" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
 </head>
@@ -94,13 +94,14 @@
 
         <div class="hero__content">
           <h1 class="hero__headline" id="hero-headline">
-            <span class="hero__line">Tu próximo proyecto</span>
+            <span class="hero__line">Tu próximo <span class="hero__mobile-line">proyecto</span></span>
             <span class="hero__line">empieza <span class="accent">aquí.</span></span>
           </h1>
 
           <div class="hero__details">
           <p class="hero__description" id="hero-description">
-            Diseño y desarrollo aplicaciones web y software a medida para tu negocio. Trabajo contigo desde la primera idea hasta la entrega.
+            <span class="hero__desktop-copy">Diseño y desarrollo aplicaciones web y software a medida para tu negocio. Trabajo contigo desde la primera idea hasta la entrega.</span>
+            <span class="hero__mobile-copy">Aplicaciones web y software a medida. De tu primera idea a la entrega.</span>
           </p>
 
           <div class="hero__actions" id="hero-actions">

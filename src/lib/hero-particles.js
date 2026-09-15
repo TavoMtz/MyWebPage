@@ -2,7 +2,7 @@
 (() => {
   'use strict';
 
-  function initSection(sectionId, containerId, toggleId, desktopCount, mobileCount, opacity) {
+  function initSection(sectionId, containerId, toggleId, desktopCount, mobileCount, opacity, mobileOpacity = opacity) {
   const hero = document.getElementById(sectionId);
   const container = document.getElementById(containerId);
   const toggle = document.getElementById(toggleId);
@@ -11,15 +11,16 @@
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const mobile = window.matchMedia('(max-width: 768px)');
   const amber = getComputedStyle(hero).getPropertyValue('--primary-container').trim();
+  const initialOpacity = mobile.matches ? mobileOpacity : opacity;
 
   window.particlesJS(container.id, {
     particles: {
       number: { value: mobile.matches ? mobileCount : desktopCount, density: { enable: true, value_area: 900 } },
       color: { value: amber },
       shape: { type: 'circle', stroke: { width: 0 } },
-      opacity: { value: opacity, random: true, anim: { enable: false } },
+      opacity: { value: initialOpacity, random: true, anim: { enable: false } },
       size: { value: 2.5, random: true, anim: { enable: false } },
-      line_linked: { enable: true, distance: 170, color: amber, opacity: opacity * 0.43, width: 1 },
+      line_linked: { enable: true, distance: 170, color: amber, opacity: initialOpacity * 0.43, width: 1 },
       // v2 initializes line colors after density; stop its first loop below.
       move: { enable: true, speed: 0.45, direction: 'none', random: false,
         straight: false, out_mode: 'out', bounce: false, attract: { enable: false } }
@@ -61,6 +62,11 @@
   document.addEventListener('visibilitychange', updatePlayback);
   reducedMotion.addEventListener('change', updatePlayback);
   mobile.addEventListener('change', () => {
+    const nextOpacity = mobile.matches ? mobileOpacity : opacity;
+    const opacityRatio = nextOpacity / instance.particles.opacity.value;
+    instance.particles.array.forEach(particle => { particle.opacity *= opacityRatio; });
+    instance.particles.opacity.value = nextOpacity;
+    instance.particles.line_linked.opacity = nextOpacity * 0.43;
     instance.particles.number.value = mobile.matches ? mobileCount : desktopCount;
     instance.fn.vendors.densityAutoParticles();
     if (!running) instance.fn.particlesDraw();
@@ -72,6 +78,6 @@
   updatePlayback();
   }
 
-  initSection('hero', 'particles-js', 'hero-motion', 65, 28, 0.42);
+  initSection('hero', 'particles-js', 'hero-motion', 65, 56, 0.42, 0.62);
   initSection('contact', 'contact-particles', 'contact-motion', 40, 18, 0.32);
 })();
