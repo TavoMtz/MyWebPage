@@ -2,100 +2,154 @@
 (() => {
   'use strict';
 
-  function initSection(sectionId, containerId, toggleId, desktopCount, mobileCount, opacity, mobileOpacity = opacity) {
-  const hero = document.getElementById(sectionId);
-  const container = document.getElementById(containerId);
-  const toggle = document.getElementById(toggleId);
-  if (!hero || !container || typeof window.particlesJS !== 'function') return;
+  function initSection(sectionId, containerId, toggleId, desktopCount, mobileCount, opacity, mobileOpacity = opacity, mobileMinimum = 0) {
+    const section = document.getElementById(sectionId);
+    const container = document.getElementById(containerId);
+    const toggle = document.getElementById(toggleId);
+    if (!section || !container || typeof window.particlesJS !== 'function') return;
 
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const mobile = window.matchMedia('(max-width: 768px)');
-  const amber = getComputedStyle(hero).getPropertyValue('--primary-container').trim();
-  const initialOpacity = mobile.matches ? mobileOpacity : opacity;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const mobile = window.matchMedia('(max-width: 768px)');
+    const amber = getComputedStyle(section).getPropertyValue('--primary-container').trim();
+    const initialOpacity = mobile.matches ? mobileOpacity : opacity;
 
-  window.particlesJS(container.id, {
-    particles: {
-      number: { value: mobile.matches ? mobileCount : desktopCount, density: { enable: true, value_area: 900 } },
-      color: { value: amber },
-      shape: { type: 'circle', stroke: { width: 0 } },
-      opacity: { value: initialOpacity, random: true, anim: { enable: false } },
-      size: { value: 2.5, random: true, anim: { enable: false } },
-      line_linked: { enable: true, distance: 170, color: amber, opacity: initialOpacity * 0.43, width: 1 },
-      // v2 initializes line colors after density; stop its first loop below.
-      move: { enable: true, speed: 0.45, direction: 'none', random: false,
-        straight: false, out_mode: 'out', bounce: false, attract: { enable: false } }
-    },
-    interactivity: {
-      detect_on: 'canvas',
-      events: { onhover: { enable: false }, onclick: { enable: false }, resize: true }
-    },
-    retina_detect: true
-  });
+    window.particlesJS(container.id, {
+      particles: {
+        number: { value: mobile.matches ? mobileCount : desktopCount, density: { enable: false } },
+        color: { value: amber },
+        shape: { type: 'circle', stroke: { width: 0 } },
+        opacity: { value: initialOpacity, random: true, anim: { enable: false } },
+        size: { value: 2.5, random: true, anim: { enable: false } },
+        line_linked: { enable: true, distance: 170, color: amber, opacity: initialOpacity * 0.43, width: 1 },
+        move: { enable: true, speed: 0.45, direction: 'none', random: false,
+          straight: false, out_mode: 'out', bounce: false, attract: { enable: false } }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: { onhover: { enable: false }, onclick: { enable: false }, resize: false }
+      },
+      retina_detect: true
+    });
 
-  const instanceEntry = window.pJSDom.find(entry => entry.pJS.canvas.el.parentElement === container);
-  const instance = instanceEntry && instanceEntry.pJS;
-  if (!instance) return;
+    const instanceEntry = window.pJSDom.find(entry => entry.pJS.canvas.el.parentElement === container);
+    const instance = instanceEntry && instanceEntry.pJS;
+    if (!instance) return;
 
-  let inView = false;
-  let userPaused = false;
-  let running = true;
+    const canvas = instance.canvas.el;
+    let inView = false;
+    let userPaused = false;
+    let running = false;
+    let resizeFrame = null;
 
-  function updatePlayback() {
-    const shouldRun = inView && !document.hidden && !reducedMotion.matches && !userPaused;
-    if (toggle) {
-      toggle.hidden = reducedMotion.matches;
-      toggle.textContent = userPaused ? 'Reanudar animación' : 'Pausar animación';
+    function targetParticleCount() {
+      const area = canvas.offsetWidth * canvas.offsetHeight;
+      const configuredCount = mobile.matches ? mobileCount : desktopCount;
+      const densityCount = Math.round((area * configuredCount) / 900000);
+      return mobile.matches ? Math.max(mobileMinimum, densityCount) : Math.max(configuredCount, densityCount);
     }
-    if (shouldRun === running) return;
-    running = shouldRun;
-    instance.particles.move.enable = shouldRun;
-    window.cancelRequestAnimFrame(instance.fn.drawAnimFrame);
-    instance.fn.drawAnimFrame = null;
-    if (shouldRun) {
-      instance.fn.vendors.draw();
-    } else {
-      // Safari can pause the first animation frame while the address bar settles.
-      // Paint the current particles once so reduced-motion and offscreen states
-      // retain the decorative background.
-      instance.fn.particlesDraw();
+
+    function syncParticleCount() {
+      const target = targetParticleCount();
+      const difference = instance.particles.array.length - target;
+      instance.particles.number.value = target;
+      if (difference < 0) instance.fn.modes.pushParticles(Math.abs(difference));
+      if (difference > 0) instance.fn.modes.removeParticles(difference);
     }
-  }
 
-  function observeMediaQuery(query, callback) {
-    if (typeof query.addEventListener === 'function') {
-      query.addEventListener('change', callback);
-    } else if (typeof query.addListener === 'function') {
-      query.addListener(callback);
+    function cancelDraw() {
+      window.cancelRequestAnimFrame(instance.fn.drawAnimFrame);
+      instance.fn.drawAnimFrame = null;
     }
-  }
 
-  const observer = new IntersectionObserver(([entry]) => {
-    inView = entry.isIntersecting;
-    updatePlayback();
-  });
-  observer.observe(hero);
+    function updatePlayback({ repaint = false } = {}) {
+      const shouldRun = inView && !document.hidden && !reducedMotion.matches && !userPaused;
+      if (toggle) {
+        toggle.hidden = reducedMotion.matches;
+        toggle.textContent = userPaused ? 'Reanudar animación' : 'Pausar animación';
+      }
+      if (shouldRun === running && !repaint) return;
 
-  document.addEventListener('visibilitychange', updatePlayback);
-  observeMediaQuery(reducedMotion, updatePlayback);
-  observeMediaQuery(mobile, () => {
-    const nextOpacity = mobile.matches ? mobileOpacity : opacity;
-    const opacityRatio = nextOpacity / instance.particles.opacity.value;
-    instance.particles.array.forEach(particle => { particle.opacity *= opacityRatio; });
-    instance.particles.opacity.value = nextOpacity;
-    instance.particles.line_linked.opacity = nextOpacity * 0.43;
-    instance.particles.number.value = mobile.matches ? mobileCount : desktopCount;
-    instance.fn.vendors.densityAutoParticles();
-    if (!running) instance.fn.particlesDraw();
-  });
-  if (toggle) {
-    toggle.addEventListener('click', () => {
-      userPaused = !userPaused;
+      running = shouldRun;
+      instance.particles.move.enable = shouldRun;
+      cancelDraw();
+      if (shouldRun) {
+        instance.fn.vendors.draw();
+      } else {
+        // Retain one frame when Safari pauses animation during browser-chrome changes.
+        instance.fn.particlesDraw();
+      }
+    }
+
+    function syncCanvas() {
+      const width = canvas.offsetWidth * instance.canvas.pxratio;
+      const height = canvas.offsetHeight * instance.canvas.pxratio;
+      if (!width || !height) return;
+
+      if (canvas.width !== width || canvas.height !== height) {
+        canvas.width = width;
+        canvas.height = height;
+        instance.canvas.w = width;
+        instance.canvas.h = height;
+        instance.fn.particlesEmpty();
+        instance.fn.particlesCreate();
+      }
+      syncParticleCount();
+      updatePlayback({ repaint: true });
+    }
+
+    function scheduleCanvasSync() {
+      if (resizeFrame !== null) window.cancelAnimationFrame(resizeFrame);
+      resizeFrame = window.requestAnimationFrame(() => {
+        resizeFrame = null;
+        syncCanvas();
+      });
+    }
+
+    function observeMediaQuery(query, callback) {
+      if (typeof query.addEventListener === 'function') {
+        query.addEventListener('change', callback);
+      } else if (typeof query.addListener === 'function') {
+        query.addListener(callback);
+      }
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
       updatePlayback();
     });
-  }
-  updatePlayback();
+    observer.observe(section);
+
+    if (typeof ResizeObserver === 'function') {
+      new ResizeObserver(scheduleCanvasSync).observe(container);
+    } else {
+      window.addEventListener('resize', scheduleCanvasSync);
+    }
+    if (window.visualViewport) window.visualViewport.addEventListener('resize', scheduleCanvasSync);
+
+    document.addEventListener('visibilitychange', () => updatePlayback({ repaint: !document.hidden }));
+    window.addEventListener('pageshow', () => {
+      scheduleCanvasSync();
+      updatePlayback({ repaint: true });
+    });
+    observeMediaQuery(reducedMotion, () => updatePlayback({ repaint: true }));
+    observeMediaQuery(mobile, () => {
+      const nextOpacity = mobile.matches ? mobileOpacity : opacity;
+      const opacityRatio = nextOpacity / instance.particles.opacity.value;
+      instance.particles.array.forEach(particle => { particle.opacity *= opacityRatio; });
+      instance.particles.opacity.value = nextOpacity;
+      instance.particles.line_linked.opacity = nextOpacity * 0.43;
+      scheduleCanvasSync();
+    });
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        userPaused = !userPaused;
+        updatePlayback({ repaint: true });
+      });
+    }
+
+    syncCanvas();
   }
 
-  initSection('hero', 'particles-js', 'hero-motion', 65, 56, 0.42, 0.62);
-  initSection('contact', 'contact-particles', 'contact-motion', 40, 18, 0.32);
+  initSection('hero', 'particles-js', 'hero-motion', 65, 56, 0.42, 0.62, 32);
+  initSection('contact', 'contact-particles', 'contact-motion', 40, 18, 0.32, 0.32, 12);
 })();
