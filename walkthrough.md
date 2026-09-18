@@ -24,6 +24,9 @@
 
 ## Particle background
 
+- Startup/reload recovery: immediately stop the vendor's initial animation loop, wait for nonzero container dimensions, and paint synchronously on load, page restoration and return from a hidden tab. Canvas context restoration also repaints paused and reduced-motion backgrounds.
+- Regression checks: `node --test tests/particle-lifecycle.test.cjs` executes the shipped vendor and initializer with simulated lifecycle events, including 100 initial loads. These checks do not reproduce Safari's compositor or replace testing on the affected Apple device.
+
 - Vendored particles.js 2.0.0 and its MIT license in `src/lib/vendor/` from the versioned npm distribution via jsDelivr. Upstream: https://github.com/VincentGarreau/particles.js.
 - `src/lib/hero-particles.js` configures small amber particles and subtle connections behind the hero content without blocking clicks.
 - Uses fewer particles on mobile, a static frame for reduced motion, pause/resume controls, and pauses animation offscreen or in a hidden tab.

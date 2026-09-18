@@ -40,6 +40,13 @@
     let userPaused = false;
     let running = false;
     let resizeFrame = null;
+    let contextLost = false;
+    let hasSize = false;
+
+    // The vendor starts its loop inside particlesJS(), before our observers exist.
+    // Stop it even when the initial layout has no usable dimensions yet.
+    cancelDraw();
+    instance.particles.move.enable = false;
 
     function targetParticleCount() {
       const area = canvas.offsetWidth * canvas.offsetHeight;
@@ -62,7 +69,7 @@
     }
 
     function updatePlayback({ repaint = false } = {}) {
-      const shouldRun = inView && !document.hidden && !reducedMotion.matches && !userPaused;
+      const shouldRun = hasSize && !contextLost && inView && !document.hidden && !reducedMotion.matches && !userPaused;
       if (toggle) {
         toggle.hidden = reducedMotion.matches;
         toggle.textContent = userPaused ? 'Reanudar animación' : 'Pausar animación';
@@ -74,16 +81,21 @@
       cancelDraw();
       if (shouldRun) {
         instance.fn.vendors.draw();
-      } else {
+      } else if (hasSize && !contextLost) {
         // Retain one frame when Safari pauses animation during browser-chrome changes.
         instance.fn.particlesDraw();
       }
     }
 
     function syncCanvas() {
-      const width = canvas.offsetWidth * instance.canvas.pxratio;
-      const height = canvas.offsetHeight * instance.canvas.pxratio;
-      if (!width || !height) return;
+      if (contextLost) return;
+      const width = Math.round(container.offsetWidth * instance.canvas.pxratio);
+      const height = Math.round(container.offsetHeight * instance.canvas.pxratio);
+      hasSize = width > 0 && height > 0;
+      if (!hasSize) {
+        updatePlayback();
+        return;
+      }
 
       if (canvas.width !== width || canvas.height !== height) {
         canvas.width = width;
@@ -126,11 +138,22 @@
     }
     if (window.visualViewport) window.visualViewport.addEventListener('resize', scheduleCanvasSync);
 
-    document.addEventListener('visibilitychange', () => updatePlayback({ repaint: !document.hidden }));
-    window.addEventListener('pageshow', () => {
-      scheduleCanvasSync();
-      updatePlayback({ repaint: true });
+    canvas.addEventListener('contextlost', () => {
+      contextLost = true;
+      updatePlayback();
     });
+    canvas.addEventListener('contextrestored', () => {
+      contextLost = false;
+      instance.fn.canvasInit();
+      syncCanvas();
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) updatePlayback();
+      else syncCanvas();
+    });
+    // Paint synchronously on restoration; animation frames can still be suspended.
+    window.addEventListener('pageshow', syncCanvas);
+    window.addEventListener('load', syncCanvas, { once: true });
     observeMediaQuery(reducedMotion, () => updatePlayback({ repaint: true }));
     observeMediaQuery(mobile, () => {
       const nextOpacity = mobile.matches ? mobileOpacity : opacity;
