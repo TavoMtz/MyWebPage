@@ -77,6 +77,6 @@ All visual modifications must comply with `DESIGN.md`:
 
 ## 5. Operational Directives
 
-* **Maintain Documentation Integrity:** Keep `DESIGN.md`, `AGENT.md`, and `walkthrough.md` aligned whenever adding, removing, or modifying layout sections.
+* **Maintain Documentation Integrity:** Keep `DESIGN.md` and `AGENT.md` aligned whenever adding, removing, or modifying layout sections.
 * **Language & Communication:** User requests may be in Spanish or English. Respond in the user's language, but keep source code, CSS variable names, and class names in clean English.
 * **Avoid Generic Frameworks:** Do not inject Tailwind, Bootstrap, or foreign styling libraries unless explicitly requested.
